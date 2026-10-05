@@ -1,0 +1,177 @@
+{
+  "name": "Mateus Nascimento",
+  "role": "Tech Engineer Specialist · Android & IA",
+  "location": "São Paulo",
+  "bio": "Engenheiro mobile focado em Android. Hoje lidero o desenvolvimento Android do C6 Assistant, o assistente com IA do C6 Bank, lançado para 35 milhões de clientes.",
+  "url": "https://mnascimentos.dev",
+  "github": "SEU-USUARIO",
+  "links": [
+    {
+      "label": "github",
+      "url": "https://github.com/SEU-USUARIO"
+    },
+    {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/mateusn/"
+    },
+    {
+      "label": "email",
+      "url": "mailto:mateus.nnascimento.s@gmail.com"
+    },
+    {
+      "label": "cv",
+      "url": "/cv/Mateus_Nascimento_Santos.pdf"
+    }
+  ],
+  "work": [
+    {
+      "name": "C6 Assistant",
+      "where": "C6 Bank",
+      "year": "2024–atual",
+      "featured": true,
+      "description": "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank — do desenvolvimento da interface conversacional ao lançamento para toda a base de clientes. Hoje é um dos principais pontos de acesso do app para dúvidas, suporte e operações bancárias.",
+      "impact": "Lançado para 35M de clientes em dez/2024"
+    },
+    {
+      "name": "Home Experience",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "featured": true,
+      "description": "Time de Home Experience: evolução da home, login, investimentos e perfil, as telas que todo cliente abre todo dia. Componentes reutilizáveis e customizáveis do Design System e serviços de permissionamento de produtos.",
+      "impact": "Fluxos centrais do app do banco"
+    },
+    {
+      "name": "EC Bahia",
+      "year": "",
+      "featured": true,
+      "description": "App oficial do Esporte Clube Bahia: streaming, jogos lance a lance, notícias, loja oficial, cupons de parceiros e adesão ao sócio. Atuei no desenvolvimento do app Android.",
+      "playstore": "https://play.google.com/store/apps/details?id=io.ecbahia&hl=pt-BR",
+      "impact": "100 mil+ downloads · nota 4,2 na Play Store"
+    },
+    {
+      "name": "Totem de autoatendimento",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "description": "App Android em modo quiosque para autoatendimento."
+    },
+    {
+      "name": "BBNK",
+      "where": "Cubos",
+      "year": "2018–2020",
+      "description": "Banking as a Service para empresas oferecerem serviços bancários aos seus clientes. Team leader do projeto."
+    }
+  ],
+  "personal": [
+    {
+      "name": "Tiker",
+      "year": "2020–2022",
+      "description": "Organizador de figurinhas do WhatsApp: criar, organizar e compartilhar pacotes.",
+      "apk": "",
+      "github": ""
+    },
+    {
+      "name": "Dizziness",
+      "year": "2016–2020",
+      "description": "App de saúde feito na Space Rocket, empresa que cofundei.",
+      "impact": "Campeão do Inova+Saúde e do Campus Future",
+      "apk": "",
+      "github": ""
+    },
+    {
+      "name": "Constante",
+      "year": "2019–2020",
+      "description": "App para criar e manter hábitos.",
+      "apk": "",
+      "github": ""
+    },
+    {
+      "name": "Data and Nutrition",
+      "year": "2018–2020",
+      "description": "Plataforma web para gestão de terapia nutricional em hospitais."
+    },
+    {
+      "name": "RoboCup 3D Simulation",
+      "year": "2016–2018",
+      "description": "Estratégia de time de futebol de robôs simulados, como pesquisador na UNEB.",
+      "impact": "Campeão latino-americano · 6º no mundial de 2017 (Nagoya)"
+    },
+    {
+      "name": "CittiCard",
+      "year": "2017–2018",
+      "description": "App colaborativo sobre o funcionamento dos postos de recarga do SalvadorCard."
+    }
+  ],
+  "about": [
+    "Sou engenheiro mobile, focado em Android. Estou no C6 Bank desde 2020: primeiro no time de Home Experience, trabalhando na home, login, investimentos, perfil e Design System; desde 2024 no time de Inteligência Artificial, liderando o Android do C6 Assistant.",
+    "Antes disso fui team leader na Cubos, instrutor de Android na Cubos Academy e cofundei a Space Rocket, onde criamos produtos digitais do zero. Na faculdade, pesquisei estratégia para futebol de robôs simulados e fomos campeões latino-americanos."
+  ],
+  "experience": [
+    {
+      "year": "2024–atual",
+      "role": "Tech Engineer Specialist",
+      "company": "C6 Bank",
+      "note": "Time de IA · liderança do desenvolvimento Android do C6 Assistant"
+    },
+    {
+      "year": "2020–2024",
+      "role": "Desenvolvedor Mobile Sênior",
+      "company": "C6 Bank",
+      "note": "Home Experience: home, login, investimentos, perfil, Design System, totem"
+    },
+    {
+      "year": "2018–2020",
+      "role": "Team Leader e Desenvolvedor Mobile",
+      "company": "Cubos",
+      "note": "Projeto BBNK"
+    },
+    {
+      "year": "2018–2019",
+      "role": "Instrutor Android",
+      "company": "Cubos Academy"
+    },
+    {
+      "year": "2016–2020",
+      "role": "Cofundador",
+      "company": "Space Rocket",
+      "note": "Dizziness, Data and Nutrition, Constante"
+    },
+    {
+      "year": "2016–2018",
+      "role": "Pesquisador",
+      "company": "NACSO · UNEB",
+      "note": "RoboCup 3D Simulated Soccer"
+    }
+  ],
+  "education": [
+    {
+      "year": "2016–2021",
+      "title": "Bacharelado em Sistemas de Informação",
+      "where": "Universidade do Estado da Bahia"
+    }
+  ],
+  "languages": "Português (nativo) · Inglês (fluente)",
+  "stack": [
+    "Kotlin",
+    "Java",
+    "Android SDK",
+    "Jetpack Compose",
+    "Clean Architecture",
+    "MVVM",
+    "Modularização",
+    "Injeção de dependência",
+    "Testes unitários",
+    "CI/CD",
+    "REST APIs",
+    "Design System"
+  ],
+  "cv": [
+    {
+      "label": "currículo (pt)",
+      "url": "/cv/Mateus_Nascimento_Santos.pdf"
+    },
+    {
+      "label": "resume (en)",
+      "url": "/cv/Mateus_Nascimento_Santos_EN.pdf"
+    }
+  ]
+}

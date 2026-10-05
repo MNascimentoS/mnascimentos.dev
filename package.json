@@ -1,0 +1,12 @@
+{
+  "name": "mnascimentos.dev",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfólio e blog de Mateus Nascimento",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "dev": "node src/dev.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
