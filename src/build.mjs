@@ -72,7 +72,15 @@ posts.sort((a, b) => b.date.localeCompare(a.date));
 // ---------- layout ----------
 const NAV = [['/', 'início'], ['/projetos/', 'projetos'], ['/blog/', 'blog'], ['/sobre/', 'sobre']];
 
-const page = ({ path: p, title, description = site.bio, body }) => write(p === '/' ? 'index.html' : `${p.slice(1)}index.html`, `<!doctype html>
+// Links internos viram relativos (../styles.css etc.), assim o site funciona
+// em mnascimentos.dev, em usuario.github.io/repo/ e abrindo o arquivo direto.
+const relativize = (html, p) => {
+  const depth = p.split('/').filter(Boolean).length;
+  const prefix = depth ? '../'.repeat(depth) : './';
+  return html.replace(/(href|src)="\/(?!\/)([^"]*)"/g, (_, attr, rest) => `${attr}="${prefix}${rest}"`);
+};
+
+const page = ({ path: p, title, description = site.bio, body }) => write(p === '/' ? 'index.html' : `${p.slice(1)}index.html`, relativize(`<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -103,7 +111,7 @@ ${body}
 </main>
 <footer><div class="wrap">${e(site.url.replace(/^https?:\/\//, ''))} · <a href="/rss.xml">rss</a></div></footer>
 </body>
-</html>`);
+</html>`, p));
 
 // ---------- componentes ----------
 const link = (label, url) => `<a href="${e(url)}"${/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : ''}>${e(label)}</a>`;
