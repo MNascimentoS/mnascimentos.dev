@@ -15,12 +15,8 @@
       "url": "https://www.linkedin.com/in/mateusn/"
     },
     {
-      "label": "email",
-      "url": "mailto:mateus.nnascimento.s@gmail.com"
-    },
-    {
-      "label": "cv",
-      "url": "/cv/Mateus_Nascimento_Santos.pdf"
+      "label": "contato@mnascimentos.dev",
+      "url": "mailto:contato@mnascimentos.dev"
     }
   ],
   "work": [
@@ -30,7 +26,8 @@
       "year": "2024–atual",
       "featured": true,
       "description": "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank — do desenvolvimento da interface conversacional ao lançamento para toda a base de clientes. Hoje é um dos principais pontos de acesso do app para dúvidas, suporte e operações bancárias.",
-      "impact": "Lançado para 35M de clientes em dez/2024"
+      "impact": "Lançado para 35M de clientes em dez/2024",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
     },
     {
       "name": "Home Experience",
@@ -38,7 +35,8 @@
       "year": "2020–2024",
       "featured": true,
       "description": "Time de Home Experience: evolução da home, login, investimentos e perfil, as telas que todo cliente abre todo dia. Componentes reutilizáveis e customizáveis do Design System e serviços de permissionamento de produtos.",
-      "impact": "Fluxos centrais do app do banco"
+      "impact": "Fluxos centrais do app do banco",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
     },
     {
       "name": "EC Bahia",

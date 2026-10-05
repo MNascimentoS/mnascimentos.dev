@@ -70,7 +70,7 @@ for (const f of fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'))) {
 posts.sort((a, b) => b.date.localeCompare(a.date));
 
 // ---------- layout ----------
-const NAV = [['/', 'início'], ['/projetos/', 'projetos'], ['/blog/', 'blog'], ['/sobre/', 'sobre']];
+const NAV = [['/', 'início'], ['/projetos/', 'projetos'], ['/blog/', 'blog']];
 
 // Links internos viram relativos (../styles.css etc.), assim o site funciona
 // em mnascimentos.dev, em usuario.github.io/repo/ e abrindo o arquivo direto.
@@ -148,6 +148,11 @@ const postRow = (p) => `
 
 // ---------- início ----------
 const featured = [...site.work, ...site.personal].filter((p) => p.featured);
+const xpRow = (year, title, sub) => `
+  <div class="xp">
+    <span class="date">${e(year)}</span>
+    <div>${title}${sub ? `<p class="muted small">${e(sub)}</p>` : ''}</div>
+  </div>`;
 page({
   path: '/',
   title: `${site.name} — ${site.role}`,
@@ -155,21 +160,44 @@ page({
 <header class="intro">
   <h1>${e(site.name)}</h1>
   <p class="muted">${e(site.role)} · ${e(site.location)}</p>
-  <p>${e(site.bio)}</p>
+  ${site.about.map((t) => `<p>${e(t)}</p>`).join('')}
   <p class="links">${site.links.map((l) => link(l.label, l.url)).join('')}</p>
 </header>
 
-<section>
-  <h2>Destaques</h2>
-  ${featured.map((p) => card(p, site.personal.includes(p) ? 'personal' : 'work', true)).join('')}
-  <p class="more"><a href="/projetos/">todos os projetos →</a></p>
-</section>
+<div class="cols">
+  <div>
+    <section>
+      <h2>Destaques</h2>
+      ${featured.map((p) => card(p, site.personal.includes(p) ? 'personal' : 'work', true)).join('')}
+      <p class="more"><a href="/projetos/">todos os projetos →</a></p>
+    </section>
+    <section>
+      <h2>Últimos posts</h2>
+      ${posts.length ? posts.slice(0, 3).map(postRow).join('') : '<p class="muted">Em breve.</p>'}
+      <p class="more"><a href="/blog/">todos os posts →</a></p>
+    </section>
+  </div>
 
-<section>
-  <h2>Últimos posts</h2>
-  ${posts.length ? posts.slice(0, 3).map(postRow).join('') : '<p class="muted">Em breve.</p>'}
-  ${posts.length > 3 ? '<p class="more"><a href="/blog/">todos os posts →</a></p>' : ''}
-</section>`,
+  <div>
+    <section>
+      <h2>Experiência</h2>
+      ${site.experience.map((x) => xpRow(x.year, `<strong>${e(x.role)}</strong> · ${e(x.company)}`, x.note)).join('')}
+    </section>
+    <section>
+      <h2>Formação</h2>
+      ${site.education.map((x) => xpRow(x.year, `<strong>${e(x.title)}</strong>`, x.where)).join('')}
+      <p class="muted small" style="margin-top:12px">${e(site.languages)}</p>
+    </section>
+    <section>
+      <h2>Stack</h2>
+      ${tags(site.stack)}
+    </section>
+    <section>
+      <h2>Currículo</h2>
+      <p class="links">${site.cv.map((l) => link(l.label, l.url)).join('')}</p>
+    </section>
+  </div>
+</div>`,
 });
 
 // ---------- projetos ----------
@@ -180,14 +208,16 @@ page({
   body: `
 <h1>Projetos</h1>
 <p class="muted">O que construí em empresas e por conta própria.</p>
-<section>
-  <h2>Empresariais</h2>
-  ${site.work.map((p) => card(p, 'work')).join('')}
-</section>
-<section>
-  <h2>Pessoais</h2>
-  ${site.personal.map((p) => card(p, 'personal')).join('')}
-</section>`,
+<div class="cols">
+  <section>
+    <h2>Empresariais</h2>
+    ${site.work.map((p) => card(p, 'work')).join('')}
+  </section>
+  <section>
+    <h2>Pessoais</h2>
+    ${site.personal.map((p) => card(p, 'personal')).join('')}
+  </section>
+</div>`,
 });
 
 // ---------- blog ----------
@@ -196,11 +226,13 @@ page({
   title: `Blog — ${site.name}`,
   description: 'Processos de desenvolvimento dos meus projetos.',
   body: `
+<div class="narrow">
 <h1>Blog</h1>
 <p class="muted">Processos de desenvolvimento, decisões e aprendizados. <a href="/rss.xml">rss</a></p>
 <section>
   ${posts.length ? posts.map(postRow).join('') : '<p class="muted">Em breve.</p>'}
-</section>`,
+</section>
+</div>`,
 });
 
 posts.forEach((p, i) => {
@@ -211,6 +243,7 @@ posts.forEach((p, i) => {
     title: `${p.title} — ${site.name}`,
     description: p.description,
     body: `
+<div class="narrow">
 <p class="small"><a href="/blog/">← blog</a></p>
 <article>
   <h1>${e(p.title)}</h1>
@@ -222,38 +255,9 @@ posts.forEach((p, i) => {
 <nav class="pager small">
   ${older ? `<a href="/blog/${older.slug}/">← ${e(older.title)}</a>` : '<span></span>'}
   ${newer ? `<a href="/blog/${newer.slug}/">${e(newer.title)} →</a>` : ''}
-</nav>`,
+</nav>
+</div>`,
   });
-});
-
-// ---------- sobre ----------
-page({
-  path: '/sobre/',
-  title: `Sobre — ${site.name}`,
-  body: `
-<h1>Sobre</h1>
-${site.about.map((t) => `<p>${e(t)}</p>`).join('')}
-<section>
-  <h2>Experiência</h2>
-  ${site.experience.map((x) => `
-  <div class="xp">
-    <span class="date">${e(x.year)}</span>
-    <div><strong>${e(x.role)}</strong> · ${e(x.company)}${x.note ? `<p class="muted small">${e(x.note)}</p>` : ''}</div>
-  </div>`).join('')}
-</section>
-<section>
-  <h2>Formação</h2>
-  ${site.education.map((x) => `<div class="xp"><span class="date">${e(x.year)}</span><div><strong>${e(x.title)}</strong><p class="muted small">${e(x.where)}</p></div></div>`).join('')}
-  <p class="muted small" style="margin-top:12px">${e(site.languages)}</p>
-</section>
-<section>
-  <h2>Stack</h2>
-  ${tags(site.stack)}
-</section>
-<section>
-  <h2>Contato</h2>
-  <p class="links">${[...site.links.filter((l) => l.label !== 'cv'), ...site.cv].map((l) => link(l.label, l.url)).join('')}</p>
-</section>`,
 });
 
 // ---------- 404, rss ----------
