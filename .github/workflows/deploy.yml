@@ -2,7 +2,7 @@ name: Deploy no GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
   workflow_dispatch:
   schedule:
     - cron: '0 9 * * *'   # 1x por dia: atualiza posts que vêm de README

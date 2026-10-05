@@ -25,7 +25,7 @@ Adicione `readme:` no cabeçalho do post e o README do repositório vira o conte
 title: Tiker: arquitetura do app
 date: 2026-10-10
 tags: [android]
-readme: https://github.com/USUARIO/tiker
+readme: https://github.com/MNascimentoS/tiker
 ---
 Texto opcional que aparece antes do README.
 ```
@@ -37,13 +37,13 @@ Texto opcional que aparece antes do README.
 ## APKs
 
 Opção 1 (recomendada): anexe o `.apk` a um Release no repositório do app e use
-`https://github.com/USUARIO/REPO/releases/latest/download/app-release.apk` no campo `apk`.
+`https://github.com/MNascimentoS/REPO/releases/latest/download/app-release.apk` no campo `apk`.
 
 Opção 2: coloque o arquivo em `public/apks/app.apk` e use `/apks/app.apk`. Limite do GitHub: 100 MB.
 
 ## Deploy
 
-1. Push para a branch `main`.
+1. Push para a branch `develop`.
 2. GitHub → Settings → Pages → Source: **GitHub Actions**.
 
 O workflow `.github/workflows/deploy.yml` publica a cada push.
@@ -58,6 +58,6 @@ O workflow `.github/workflows/deploy.yml` publica a cada push.
 | A | @ | 185.199.109.153 |
 | A | @ | 185.199.110.153 |
 | A | @ | 185.199.111.153 |
-| CNAME | www | USUARIO.github.io |
+| CNAME | www | MNascimentoS.github.io |
 
 Depois: Settings → Pages → Custom domain → `mnascimentos.dev` → marcar **Enforce HTTPS** (obrigatório em `.dev`).

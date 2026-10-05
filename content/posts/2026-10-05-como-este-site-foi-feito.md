@@ -20,4 +20,4 @@ readme: https://github.com/usuario/tiker
 ---
 ```
 
-A cada `git push` na `main`, o GitHub Actions roda `node src/build.mjs` e publica a pasta `dist/` no GitHub Pages, em `mnascimentos.dev`.
+A cada `git push` na `develop`, o GitHub Actions roda `node src/build.mjs` e publica a pasta `dist/` no GitHub Pages, em `mnascimentos.dev`.
