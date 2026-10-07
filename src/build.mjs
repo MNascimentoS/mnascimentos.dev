@@ -1,5 +1,6 @@
 // Gera o site em dist/. Uso: node src/build.mjs
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { markdown, parseFrontmatter, escapeHtml as e, slugify } from './markdown.mjs';
@@ -8,6 +9,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const readJson = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'content', f), 'utf8'));
 const SITES = { pt: readJson('site.json'), en: readJson('site.en.json') };
+// hash do CSS na URL: cada deploy invalida o cache do navegador
+const CSS_VERSION = crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'src/styles.css'))).digest('hex').slice(0, 8);
 const asArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -143,7 +146,7 @@ function buildLang(lang) {
 ${altPath ? `<link rel="alternate" hreflang="${UI[other].htmlLang}" href="${site.url}${altPath}">` : ''}
 <link rel="icon" href="/favicon.svg">
 <link rel="alternate" type="application/rss+xml" href="${R.home}rss.xml">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=${CSS_VERSION}">
 </head>
 <body>
 <nav class="nav">
