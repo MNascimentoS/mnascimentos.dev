@@ -3,6 +3,7 @@ title: Como este site foi feito
 date: 2026-10-05
 description: HTML estático, um script Node e GitHub Actions.
 tags: [web, github-actions]
+translation: site
 ---
 
 Sem framework. Um script Node lê dois tipos de arquivo e gera HTML:

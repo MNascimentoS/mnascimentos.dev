@@ -106,3 +106,9 @@ th { background: var(--surface); }
 .pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); }
 
 footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-size: 0.85rem; color: var(--muted); }
+
+/* botão de idioma */
+.nav .lang { font-size: 0.75rem !important; border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; margin-left: 4px; }
+.nav .lang:hover { border-color: var(--accent); color: var(--accent) !important; }
+.nav .wrap > div { align-items: center; }
+.card .tags { margin-top: 8px; }

@@ -61,26 +61,37 @@
   ],
   "personal": [
     {
+      "name": "Aureole Launcher",
+      "year": "em desenvolvimento",
+      "featured": true,
+      "description": "Launcher Android moderno e customizável, feito 100% em Jetpack Compose: grid dinâmico com drag-and-drop, UI glassmórfica com blur em tempo real, temas com paletas dinâmicas, pastas e widgets nativos.",
+      "stack": [
+        "Kotlin",
+        "Compose",
+        "Clean Architecture",
+        "MVVM",
+        "Room",
+        "Coroutines/Flow",
+        "Fastlane"
+      ],
+      "github": "https://github.com/MNascimentoS/Aureole-Launcher"
+    },
+    {
       "name": "Tiker",
       "year": "2020–2022",
       "description": "Organizador de figurinhas do WhatsApp: criar, organizar e compartilhar pacotes.",
-      "apk": "",
-      "github": ""
+      "github": "https://github.com/MNascimentoS/Tiker-App"
     },
     {
       "name": "Dizziness",
       "year": "2016–2020",
       "description": "App de saúde feito na Space Rocket, empresa que cofundei.",
-      "impact": "Campeão do Inova+Saúde e do Campus Future",
-      "apk": "",
-      "github": ""
+      "impact": "Campeão do Inova+Saúde e do Campus Future"
     },
     {
       "name": "Constante",
       "year": "2019–2020",
-      "description": "App para criar e manter hábitos.",
-      "apk": "",
-      "github": ""
+      "description": "App para criar e manter hábitos."
     },
     {
       "name": "Data and Nutrition",

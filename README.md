@@ -16,6 +16,12 @@ npm run build   # gera dist/
 
 Campos opcionais em cada projeto: `impact`, `apk`, `github`, `playstore`, `url`, `image`. Campo vazio não aparece.
 
+## Idiomas (PT / EN)
+
+- Português em `/`, inglês em `/en/`, com botão PT/EN no menu.
+- Textos: `content/site.json` (PT) e `content/site.en.json` (EN) — mantenha os dois em sincronia.
+- Posts: `lang: en` no cabeçalho para inglês (padrão é PT). Para ligar um post à sua tradução, use o mesmo `translation: <id>` nos dois arquivos.
+
 ## Posts a partir de README
 
 Adicione `readme:` no cabeçalho do post e o README do repositório vira o conteúdo:

@@ -6,7 +6,8 @@ import { markdown, parseFrontmatter, escapeHtml as e, slugify } from './markdown
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
-const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/site.json'), 'utf8'));
+const readJson = (f) => JSON.parse(fs.readFileSync(path.join(ROOT, 'content', f), 'utf8'));
+const SITES = { pt: readJson('site.json'), en: readJson('site.en.json') };
 const asArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
 
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -53,14 +54,15 @@ for (const f of fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'))) {
     } catch (err) {
       console.warn(`⚠ README não carregado para "${f}": ${err.message}`);
       source = { label: data.readme.replace(/^https?:\/\//, ''), url: data.readme };
-      html += `<p class="muted">Leia o README completo em <a href="${e(data.readme)}">${e(source.label)}</a>.</p>`;
+      html += `<p class="muted">README:  <a href="${e(data.readme)}">${e(source.label)}</a></p>`;
     }
     markdown('', { base: null });
   }
   posts.push({
     ...data,
+    lang: data.lang === 'en' ? 'en' : 'pt',
     tags: asArray(data.tags),
-    slug: data.slug || slugify(f.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')),
+    slug: data.slug || slugify(f.replace(/(\.(en|pt))?\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')),
     date: String(data.date).slice(0, 10),
     minutes: Math.max(1, Math.round(words.split(/\s+/).length / 200)),
     html,
@@ -69,8 +71,29 @@ for (const f of fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'))) {
 }
 posts.sort((a, b) => b.date.localeCompare(a.date));
 
-// ---------- layout ----------
-const NAV = [['/', 'início'], ['/projetos/', 'projetos'], ['/blog/', 'blog']];
+// ---------- textos de interface ----------
+const UI = {
+  pt: {
+    htmlLang: 'pt-BR', home: 'início', projects: 'projetos', blog: 'blog',
+    featured: 'Destaques', allProjects: 'todos os projetos →', latestPosts: 'Últimos posts', allPosts: 'todos os posts →', soon: 'Em breve.',
+    experience: 'Experiência', education: 'Formação', stack: 'Stack', cv: 'Currículo', personal: 'Pessoal',
+    projectsTitle: 'Projetos', projectsLead: 'O que construí em empresas e por conta própria.', work: 'Empresariais', personalPl: 'Pessoais',
+    blogLead: 'Processos de desenvolvimento, decisões e aprendizados.', readmeFrom: 'README de', notFound: 'Página não encontrada.', back: 'Voltar ao início',
+  },
+  en: {
+    htmlLang: 'en', home: 'home', projects: 'projects', blog: 'blog',
+    featured: 'Highlights', allProjects: 'all projects →', latestPosts: 'Latest posts', allPosts: 'all posts →', soon: 'Coming soon.',
+    experience: 'Experience', education: 'Education', stack: 'Stack', cv: 'Resume', personal: 'Personal',
+    projectsTitle: 'Projects', projectsLead: 'What I built at companies and on my own.', work: 'Work', personalPl: 'Personal',
+    blogLead: 'Development process, decisions and lessons learned.', readmeFrom: 'README from', notFound: 'Page not found.', back: 'Back home',
+  },
+};
+
+// Rotas equivalentes em cada idioma (usadas pelo botão PT/EN)
+const ROUTES = {
+  pt: { home: '/', projects: '/projetos/', blog: '/blog/' },
+  en: { home: '/en/', projects: '/en/projects/', blog: '/en/blog/' },
+};
 
 // Links internos viram relativos (../styles.css etc.), assim o site funciona
 // em mnascimentos.dev, em usuario.github.io/repo/ e abrindo o arquivo direto.
@@ -80,8 +103,22 @@ const relativize = (html, p) => {
   return html.replace(/(href|src)="\/(?!\/)([^"]*)"/g, (_, attr, rest) => `${attr}="${prefix}${rest}"`);
 };
 
-const page = ({ path: p, title, description = site.bio, body }) => write(p === '/' ? 'index.html' : `${p.slice(1)}index.html`, relativize(`<!doctype html>
-<html lang="pt-BR">
+const link = (label, url) => `<a href="${e(url)}"${/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : ''}>${e(label)}</a>`;
+const tags = (list) => (list && list.length ? `<span class="tags">${list.map((t) => `<span class="tag">${e(t)}</span>`).join('')}</span>` : '');
+
+function buildLang(lang) {
+  const site = SITES[lang];
+  const t = UI[lang];
+  const R = ROUTES[lang];
+  const other = lang === 'pt' ? 'en' : 'pt';
+  const langPosts = posts.filter((p) => p.lang === lang);
+  const postUrl = (p) => `${R.blog}${p.slug}/`;
+
+  const page = ({ path: p, key, alt, title, description = site.bio, body }) => {
+    const altPath = alt === undefined ? ROUTES[other][key] || ROUTES[other].home : alt;
+    const nav = [['home', R.home, t.home], ['projects', R.projects, t.projects], ['blog', R.blog, t.blog]];
+    const html = `<!doctype html>
+<html lang="${t.htmlLang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,184 +129,192 @@ const page = ({ path: p, title, description = site.bio, body }) => write(p === '
 <meta property="og:url" content="${site.url}${p}">
 <meta name="theme-color" content="#0f1216">
 <link rel="canonical" href="${site.url}${p}">
+${altPath ? `<link rel="alternate" hreflang="${UI[other].htmlLang}" href="${site.url}${altPath}">` : ''}
 <link rel="icon" href="/favicon.svg">
-<link rel="alternate" type="application/rss+xml" href="/rss.xml">
+<link rel="alternate" type="application/rss+xml" href="${R.home}rss.xml">
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="logo" href="/">mn ~/</a>
-    <div>${NAV.map(([href, label]) => {
-      const on = href === '/' ? p === '/' : p.startsWith(href);
-      return `<a href="${href}"${on ? ' aria-current="page"' : ''}>${label}</a>`;
-    }).join('')}</div>
+    <a class="logo" href="${R.home}">mn ~/</a>
+    <div>${nav.map(([k, href, label]) => `<a href="${href}"${k === key ? ' aria-current="page"' : ''}>${label}</a>`).join('')}
+      ${altPath ? `<a class="lang" href="${altPath}" hreflang="${UI[other].htmlLang}">${other.toUpperCase()}</a>` : ''}
+    </div>
   </div>
 </nav>
 <main class="wrap">
 ${body}
 </main>
-<footer><div class="wrap">${e(site.url.replace(/^https?:\/\//, ''))} · <a href="/rss.xml">rss</a></div></footer>
+<footer><div class="wrap">${e(site.url.replace(/^https?:\/\//, ''))} · <a href="${R.home}rss.xml">rss</a></div></footer>
 </body>
-</html>`, p));
+</html>`;
+    write(p === '/' ? 'index.html' : `${p.slice(1)}index.html`, relativize(html, p));
+  };
 
-// ---------- componentes ----------
-const link = (label, url) => `<a href="${e(url)}"${/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : ''}>${e(label)}</a>`;
-const tags = (list) => (list.length ? `<span class="tags">${list.map((t) => `<span class="tag">${e(t)}</span>`).join('')}</span>` : '');
-
-const card = (p, kind, showKind = false) => {
-  const links = [
-    p.apk && link('apk ↓', p.apk),
-    p.github && link('github', p.github),
-    p.playstore && link('play store', p.playstore),
-    p.url && link('site', p.url),
-    p.post && `<a href="/blog/${e(p.post)}/">post</a>`,
-  ].filter(Boolean);
-  const meta = [p.where || (showKind && kind === 'personal' ? 'Pessoal' : ''), p.year].filter(Boolean).join(' · ');
-  return `
+  const card = (p, kind, showKind = false) => {
+    const links = [
+      p.apk && link('apk ↓', p.apk),
+      p.github && link('github', p.github),
+      p.playstore && link('play store', p.playstore),
+      p.url && link('site', p.url),
+      p.post && `<a href="${R.blog}${e(p.post)}/">post</a>`,
+    ].filter(Boolean);
+    const meta = [p.where || (showKind && kind === 'personal' ? t.personal : ''), p.year].filter(Boolean).join(' · ');
+    return `
 <div class="card">
   <div class="row"><strong>${e(p.name)}</strong><span class="muted small">${e(meta)}</span></div>
   <p>${e(p.description)}</p>
   ${p.impact ? `<p class="impact">→ ${e(p.impact)}</p>` : ''}
+  ${tags(p.stack)}
   ${p.image ? `<img src="${e(p.image)}" alt="${e(p.name)}" loading="lazy">` : ''}
   ${links.length ? `<p class="links small">${links.join('')}</p>` : ''}
 </div>`;
-};
+  };
 
-const postRow = (p) => `
+  const postRow = (p) => `
 <div class="post-row">
   <span class="date">${p.date}</span>
   <div>
-    <a href="/blog/${p.slug}/">${e(p.title)}</a>
+    <a href="${postUrl(p)}">${e(p.title)}</a>
     ${p.description ? `<p class="muted small">${e(p.description)}</p>` : ''}
     ${tags(p.tags)}
   </div>
 </div>`;
 
-// ---------- início ----------
-const featured = [...site.work, ...site.personal].filter((p) => p.featured);
-const xpRow = (year, title, sub) => `
+  const xpRow = (year, title, sub) => `
   <div class="xp">
     <span class="date">${e(year)}</span>
     <div>${title}${sub ? `<p class="muted small">${e(sub)}</p>` : ''}</div>
   </div>`;
-page({
-  path: '/',
-  title: `${site.name} — ${site.role}`,
-  body: `
+
+  // início
+  const featured = [...site.work, ...site.personal].filter((p) => p.featured);
+  page({
+    path: R.home, key: 'home',
+    title: `${site.name} — ${site.role}`,
+    body: `
 <header class="intro">
   <h1>${e(site.name)}</h1>
   <p class="muted">${e(site.role)} · ${e(site.location)}</p>
-  ${site.about.map((t) => `<p>${e(t)}</p>`).join('')}
+  ${site.about.map((x) => `<p>${e(x)}</p>`).join('')}
   <p class="links">${site.links.map((l) => link(l.label, l.url)).join('')}</p>
 </header>
 
 <div class="cols">
   <div>
     <section>
-      <h2>Destaques</h2>
+      <h2>${t.featured}</h2>
       ${featured.map((p) => card(p, site.personal.includes(p) ? 'personal' : 'work', true)).join('')}
-      <p class="more"><a href="/projetos/">todos os projetos →</a></p>
+      <p class="more"><a href="${R.projects}">${t.allProjects}</a></p>
     </section>
     <section>
-      <h2>Últimos posts</h2>
-      ${posts.length ? posts.slice(0, 3).map(postRow).join('') : '<p class="muted">Em breve.</p>'}
-      <p class="more"><a href="/blog/">todos os posts →</a></p>
+      <h2>${t.latestPosts}</h2>
+      ${langPosts.length ? langPosts.slice(0, 3).map(postRow).join('') : `<p class="muted">${t.soon}</p>`}
+      <p class="more"><a href="${R.blog}">${t.allPosts}</a></p>
     </section>
   </div>
-
   <div>
     <section>
-      <h2>Experiência</h2>
+      <h2>${t.experience}</h2>
       ${site.experience.map((x) => xpRow(x.year, `<strong>${e(x.role)}</strong> · ${e(x.company)}`, x.note)).join('')}
     </section>
     <section>
-      <h2>Formação</h2>
+      <h2>${t.education}</h2>
       ${site.education.map((x) => xpRow(x.year, `<strong>${e(x.title)}</strong>`, x.where)).join('')}
       <p class="muted small" style="margin-top:12px">${e(site.languages)}</p>
     </section>
     <section>
-      <h2>Stack</h2>
+      <h2>${t.stack}</h2>
       ${tags(site.stack)}
     </section>
     <section>
-      <h2>Currículo</h2>
+      <h2>${t.cv}</h2>
       <p class="links">${site.cv.map((l) => link(l.label, l.url)).join('')}</p>
     </section>
   </div>
 </div>`,
-});
+  });
 
-// ---------- projetos ----------
-page({
-  path: '/projetos/',
-  title: `Projetos — ${site.name}`,
-  description: 'Projetos empresariais e pessoais.',
-  body: `
-<h1>Projetos</h1>
-<p class="muted">O que construí em empresas e por conta própria.</p>
+  // projetos
+  page({
+    path: R.projects, key: 'projects',
+    title: `${t.projectsTitle} — ${site.name}`,
+    description: t.projectsLead,
+    body: `
+<h1>${t.projectsTitle}</h1>
+<p class="muted">${t.projectsLead}</p>
 <div class="cols">
   <section>
-    <h2>Empresariais</h2>
+    <h2>${t.work}</h2>
     ${site.work.map((p) => card(p, 'work')).join('')}
   </section>
   <section>
-    <h2>Pessoais</h2>
+    <h2>${t.personalPl}</h2>
     ${site.personal.map((p) => card(p, 'personal')).join('')}
   </section>
 </div>`,
-});
+  });
 
-// ---------- blog ----------
-page({
-  path: '/blog/',
-  title: `Blog — ${site.name}`,
-  description: 'Processos de desenvolvimento dos meus projetos.',
-  body: `
-<div class="narrow">
-<h1>Blog</h1>
-<p class="muted">Processos de desenvolvimento, decisões e aprendizados. <a href="/rss.xml">rss</a></p>
-<section>
-  ${posts.length ? posts.map(postRow).join('') : '<p class="muted">Em breve.</p>'}
-</section>
-</div>`,
-});
-
-posts.forEach((p, i) => {
-  const newer = posts[i - 1];
-  const older = posts[i + 1];
+  // blog
   page({
-    path: `/blog/${p.slug}/`,
-    title: `${p.title} — ${site.name}`,
-    description: p.description,
+    path: R.blog, key: 'blog',
+    title: `Blog — ${site.name}`,
+    description: t.blogLead,
     body: `
 <div class="narrow">
-<p class="small"><a href="/blog/">← blog</a></p>
+<h1>Blog</h1>
+<p class="muted">${t.blogLead} <a href="${R.home}rss.xml">rss</a></p>
+<section>
+  ${langPosts.length ? langPosts.map(postRow).join('') : `<p class="muted">${t.soon}</p>`}
+</section>
+</div>`,
+  });
+
+  langPosts.forEach((p, i) => {
+    const newer = langPosts[i - 1];
+    const older = langPosts[i + 1];
+    // tradução: post do outro idioma com o mesmo "translation" (ou mesmo slug)
+    const tr = posts.find((x) => x.lang === other && ((p.translation && x.translation === p.translation) || x.slug === p.slug));
+    page({
+      path: postUrl(p), key: 'blog',
+      alt: tr ? `${ROUTES[other].blog}${tr.slug}/` : ROUTES[other].blog,
+      title: `${p.title} — ${site.name}`,
+      description: p.description,
+      body: `
+<div class="narrow">
+<p class="small"><a href="${R.blog}">← blog</a></p>
 <article>
   <h1>${e(p.title)}</h1>
   <p class="date">${p.date} · ${p.minutes} min</p>
-  ${p.source ? `<p><a class="source" href="${e(p.source.url)}" target="_blank" rel="noopener">↳ README de ${e(p.source.label)}</a></p>` : ''}
+  ${p.source ? `<p><a class="source" href="${e(p.source.url)}" target="_blank" rel="noopener">↳ ${t.readmeFrom} ${e(p.source.label)}</a></p>` : ''}
   ${tags(p.tags)}
   <div class="prose">${p.html}</div>
 </article>
 <nav class="pager small">
-  ${older ? `<a href="/blog/${older.slug}/">← ${e(older.title)}</a>` : '<span></span>'}
-  ${newer ? `<a href="/blog/${newer.slug}/">${e(newer.title)} →</a>` : ''}
+  ${older ? `<a href="${postUrl(older)}">← ${e(older.title)}</a>` : '<span></span>'}
+  ${newer ? `<a href="${postUrl(newer)}">${e(newer.title)} →</a>` : ''}
 </nav>
 </div>`,
+    });
   });
-});
 
-// ---------- 404, rss ----------
-page({ path: '/404/', title: '404', body: '<h1>404</h1><p class="muted">Página não encontrada. <a href="/">Voltar ao início</a></p>' });
+  write(`${R.home.slice(1)}rss.xml`, `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>${e(site.name)}</title><link>${site.url}${R.home}</link><description>${e(site.role)}</description><language>${t.htmlLang}</language>
+${langPosts.map((p) => `<item><title>${e(p.title)}</title><link>${site.url}${postUrl(p)}</link><guid>${site.url}${postUrl(p)}</guid><pubDate>${new Date(p.date + 'T12:00:00Z').toUTCString()}</pubDate></item>`).join('\n')}
+</channel></rss>`);
+
+  return page;
+}
+
+const ptPage = buildLang('pt');
+buildLang('en');
+
+// 404 (único, em PT com link para EN)
+ptPage({ path: '/404/', key: '', alt: '/en/', title: '404', body: `<h1>404</h1><p class="muted">${UI.pt.notFound} <a href="/">${UI.pt.back}</a> · <a href="/en/">${UI.en.back}</a></p>` });
 fs.renameSync(path.join(DIST, '404/index.html'), path.join(DIST, '404.html'));
 fs.rmdirSync(path.join(DIST, '404'));
 
-write('rss.xml', `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel><title>${e(site.name)}</title><link>${site.url}</link><description>${e(site.role)}</description>
-${posts.map((p) => `<item><title>${e(p.title)}</title><link>${site.url}/blog/${p.slug}/</link><guid>${site.url}/blog/${p.slug}/</guid><pubDate>${new Date(p.date + 'T12:00:00Z').toUTCString()}</pubDate></item>`).join('\n')}
-</channel></rss>`);
-
 fs.cpSync(path.join(ROOT, 'public'), DIST, { recursive: true });
 fs.copyFileSync(path.join(ROOT, 'src/styles.css'), path.join(DIST, 'styles.css'));
-console.log(`✔ dist/ gerado (${posts.length} posts)`);
+console.log(`✔ dist/ gerado (pt: ${posts.filter((p) => p.lang === 'pt').length} posts, en: ${posts.filter((p) => p.lang === 'en').length} posts)`);

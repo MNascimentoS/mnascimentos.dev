@@ -1,0 +1,117 @@
+{
+  "name": "Mateus Nascimento",
+  "role": "Tech Engineer Specialist · Android & AI",
+  "location": "São Paulo, Brazil",
+  "bio": "Mobile engineer focused on Android. I lead Android development of C6 Assistant, C6 Bank's AI assistant, launched to 35 million customers.",
+  "url": "https://mnascimentos.dev",
+  "github": "MNascimentoS",
+  "links": [
+    { "label": "github", "url": "https://github.com/MNascimentoS" },
+    { "label": "linkedin", "url": "https://www.linkedin.com/in/mateusn/" },
+    { "label": "contato@mnascimentos.dev", "url": "mailto:contato@mnascimentos.dev" }
+  ],
+  "work": [
+    {
+      "name": "C6 Assistant",
+      "where": "C6 Bank",
+      "year": "2024–present",
+      "featured": true,
+      "description": "I lead Android for C6 Assistant, C6 Bank's AI assistant — from building the conversational interface to the launch for the entire customer base. It's now one of the app's main entry points for questions, support and banking operations.",
+      "impact": "Launched to 35M customers in Dec 2024",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
+    },
+    {
+      "name": "Home Experience",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "featured": true,
+      "description": "Home Experience team: evolving the home, login, investments and profile — the screens every customer opens every day. Reusable, customizable Design System components and product permission services.",
+      "impact": "Core flows of the banking app",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
+    },
+    {
+      "name": "EC Bahia",
+      "year": "",
+      "featured": true,
+      "description": "Official app of Esporte Clube Bahia: streaming, live play-by-play, news, official store, partner coupons and membership sign-up. I worked on the Android app development.",
+      "playstore": "https://play.google.com/store/apps/details?id=io.ecbahia&hl=en-US",
+      "impact": "100k+ downloads · 4.2 rating on Google Play"
+    },
+    {
+      "name": "Self-service kiosk",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "description": "Android app running in kiosk mode for self-service."
+    },
+    {
+      "name": "BBNK",
+      "where": "Cubos",
+      "year": "2018–2020",
+      "description": "Banking as a Service so companies can offer banking services to their customers. Team leader on the project."
+    }
+  ],
+  "personal": [
+    {
+      "name": "Aureole Launcher",
+      "year": "in progress",
+      "featured": true,
+      "description": "A modern, customizable Android launcher built 100% in Jetpack Compose: dynamic grid with drag-and-drop, glassmorphic UI with real-time blur, dynamic color themes, folders and native widgets.",
+      "stack": ["Kotlin", "Compose", "Clean Architecture", "MVVM", "Room", "Coroutines/Flow", "Fastlane"],
+      "github": "https://github.com/MNascimentoS/Aureole-Launcher"
+    },
+    {
+      "name": "Tiker",
+      "year": "2020–2022",
+      "description": "WhatsApp sticker organizer: create, organize and share sticker packs.",
+      "github": "https://github.com/MNascimentoS/Tiker-App"
+    },
+    {
+      "name": "Dizziness",
+      "year": "2016–2020",
+      "description": "Health app built at Space Rocket, a company I co-founded.",
+      "impact": "Winner of Inova+Saúde and Campus Future"
+    },
+    {
+      "name": "Constante",
+      "year": "2019–2020",
+      "description": "App to build and keep habits."
+    },
+    {
+      "name": "Data and Nutrition",
+      "year": "2018–2020",
+      "description": "Web platform to manage nutritional therapy in hospitals."
+    },
+    {
+      "name": "RoboCup 3D Simulation",
+      "year": "2016–2018",
+      "description": "Team strategy for simulated robot soccer, as a researcher at UNEB.",
+      "impact": "Latin American champion · 6th at RoboCup 2017 (Nagoya)"
+    },
+    {
+      "name": "CittiCard",
+      "year": "2017–2018",
+      "description": "Crowdsourced app showing whether SalvadorCard top-up stations are working."
+    }
+  ],
+  "about": [
+    "I'm a mobile engineer focused on Android. I've been at C6 Bank since 2020: first on the Home Experience team, working on the home, login, investments, profile and Design System; since 2024 on the Artificial Intelligence team, leading Android for C6 Assistant.",
+    "Before that I was a team leader at Cubos, an Android instructor at Cubos Academy, and co-founded Space Rocket, where we built digital products from scratch. In college I researched strategy for simulated robot soccer and we became Latin American champions."
+  ],
+  "experience": [
+    { "year": "2024–present", "role": "Tech Engineer Specialist", "company": "C6 Bank", "note": "AI team · leading Android development of C6 Assistant" },
+    { "year": "2020–2024", "role": "Senior Mobile Developer", "company": "C6 Bank", "note": "Home Experience: home, login, investments, profile, Design System, kiosk" },
+    { "year": "2018–2020", "role": "Team Leader & Mobile Developer", "company": "Cubos", "note": "BBNK project" },
+    { "year": "2018–2019", "role": "Android Instructor", "company": "Cubos Academy" },
+    { "year": "2016–2020", "role": "Co-founder", "company": "Space Rocket", "note": "Dizziness, Data and Nutrition, Constante" },
+    { "year": "2016–2018", "role": "Researcher", "company": "NACSO · UNEB", "note": "RoboCup 3D Simulated Soccer" }
+  ],
+  "education": [
+    { "year": "2016–2021", "title": "B.Sc. in Information Systems", "where": "Bahia State University (UNEB)" }
+  ],
+  "languages": "Portuguese (native) · English (fluent)",
+  "stack": ["Kotlin", "Java", "Android SDK", "Jetpack Compose", "Clean Architecture", "MVVM", "Modularization", "Dependency Injection", "Unit Testing", "CI/CD", "REST APIs", "Design System"],
+  "cv": [
+    { "label": "resume (en)", "url": "/cv/Mateus_Nascimento_Santos_EN.pdf" },
+    { "label": "currículo (pt)", "url": "/cv/Mateus_Nascimento_Santos.pdf" }
+  ]
+}
