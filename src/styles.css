@@ -122,6 +122,8 @@ footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-size: 0.8
 .facts dt::before { content: '$ '; color: var(--muted); }
 .facts dd { margin: 0; color: var(--text); }
 
-/* vídeo incorporado (LinkedIn) */
-.embed { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
-.embed iframe { display: block; width: 100%; height: 560px; border: 0; }
+/* vídeo do projeto */
+.media { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #000; }
+.media video { display: block; width: 100%; max-height: 480px; }
+.media.yt { aspect-ratio: 16 / 9; }
+.media.yt iframe { width: 100%; height: 100%; border: 0; display: block; }

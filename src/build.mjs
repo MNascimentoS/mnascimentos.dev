@@ -100,11 +100,22 @@ const ROUTES = {
 const relativize = (html, p) => {
   const depth = p.split('/').filter(Boolean).length;
   const prefix = depth ? '../'.repeat(depth) : './';
-  return html.replace(/(href|src)="\/(?!\/)([^"]*)"/g, (_, attr, rest) => `${attr}="${prefix}${rest}"`);
+  return html.replace(/(href|src|poster)="\/(?!\/)([^"]*)"/g, (_, attr, rest) => `${attr}="${prefix}${rest}"`);
 };
 
 const link = (label, url) => `<a href="${e(url)}"${/^https?:/.test(url) ? ' target="_blank" rel="noopener"' : ''}>${e(label)}</a>`;
 const tags = (list) => (list && list.length ? `<span class="tags">${list.map((t) => `<span class="tag">${e(t)}</span>`).join('')}</span>` : '');
+
+// Vídeo do projeto: arquivo próprio (.mp4/.webm em public/videos) ou YouTube.
+const media = (p) => {
+  if (!p.media) return '';
+  if (/\.(mp4|webm)$/i.test(p.media)) {
+    return `<div class="media"><video src="${e(p.media)}" controls preload="metadata" playsinline${p.poster ? ` poster="${e(p.poster)}"` : ''}></video></div>`;
+  }
+  const yt = p.media.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{11})/);
+  if (yt) return `<div class="media yt"><iframe src="https://www.youtube-nocookie.com/embed/${yt[1]}" title="${e(p.name)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
+  return '';
+};
 
 function buildLang(lang) {
   const site = SITES[lang];
@@ -169,7 +180,7 @@ ${body}
   ${p.impact ? `<p class="impact">→ ${e(p.impact)}</p>` : ''}
   ${tags(p.stack)}
   ${p.image ? `<img src="${e(p.image)}" alt="${e(p.name)}" loading="lazy">` : ''}
-  ${p.embed ? `<div class="embed"><iframe src="${e(p.embed)}" title="${e(p.name)}" loading="lazy" allowfullscreen></iframe></div>` : ''}
+  ${media(p)}
   ${links.length ? `<p class="links small">${links.join('')}</p>` : ''}
 </div>`;
   };
