@@ -47,10 +47,19 @@
       "impact": "100 mil+ downloads · nota 4,2 na Play Store"
     },
     {
+      "name": "Data and Nutrition (D@N)",
+      "year": "2018–2020",
+      "description": "Sistema de gestão da terapia nutricional para hospitais e clínicas: admissão de pacientes, prescrição e administração de dietas, exames, catálogo de produtos e relatórios de calorias e proteínas. Desenvolvido pela Space Rocket para a Nutrhosp.",
+      "where": "Space Rocket",
+      "url": "https://dataandnutrition.com.br/"
+    },
+    {
       "name": "Totem de autoatendimento",
       "where": "C6 Bank",
       "year": "2020–2024",
-      "description": "App Android em modo quiosque para autoatendimento."
+      "description": "App Android em modo quiosque para autoatendimento.",
+      "video": "https://www.linkedin.com/feed/update/urn:li:activity:6978755257132593152/",
+      "embed": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6978755257132593152"
     },
     {
       "name": "BBNK",
@@ -85,24 +94,31 @@
     {
       "name": "Dizziness",
       "year": "2016–2020",
-      "description": "App de saúde feito na Space Rocket, empresa que cofundei.",
-      "impact": "Campeão do Inova+Saúde e do Campus Future"
+      "description": "App de terapia para tontura em crianças e adolescentes: exercícios que estimulam o reflexo vestíbulo-ocular e acompanhamento da evolução pelo escore DHI-CA.",
+      "impact": "Campeão do Inova+Saúde e do Campus Future · nota 4,5 na Play Store",
+      "where": "Space Rocket",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=pt-BR"
     },
     {
       "name": "Constante",
       "year": "2019–2020",
-      "description": "App para criar e manter hábitos."
+      "description": "App de hábitos e metas: hábitos ilimitados e customizáveis, lembretes, calendário de progresso, estatísticas por semana, mês e ano, e timer.",
+      "where": "Space Rocket",
+      "impact": "10 mil+ downloads · nota 4,5 na Play Store",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=pt-BR"
     },
     {
-      "name": "Data and Nutrition",
-      "year": "2018–2020",
-      "description": "Plataforma web para gestão de terapia nutricional em hospitais."
-    },
-    {
-      "name": "RoboCup 3D Simulation",
+      "name": "Liga de Futebol de Robôs",
       "year": "2016–2018",
-      "description": "Estratégia de time de futebol de robôs simulados, como pesquisador na UNEB.",
-      "impact": "Campeão latino-americano · 6º no mundial de 2017 (Nagoya)"
+      "description": "Estratégia e coordenação de times de futebol de robôs, como pesquisador no NACSO/UNEB.",
+      "impact": "Campeão latino-americano · 6º no mundial de 2017 (Nagoya)",
+      "stack": [
+        "VSSS",
+        "3D Simulation",
+        "3D Soccer Strategy",
+        "Robot",
+        "Robot Coordination"
+      ]
     },
     {
       "name": "CittiCard",

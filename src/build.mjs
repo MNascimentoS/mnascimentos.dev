@@ -158,6 +158,7 @@ ${body}
       p.github && link('github', p.github),
       p.playstore && link('play store', p.playstore),
       p.url && link('site', p.url),
+      p.video && link(lang === 'pt' ? 'vídeo no linkedin' : 'video on linkedin', p.video),
       p.post && `<a href="${R.blog}${e(p.post)}/">post</a>`,
     ].filter(Boolean);
     const meta = [p.where || (showKind && kind === 'personal' ? t.personal : ''), p.year].filter(Boolean).join(' · ');
@@ -168,6 +169,7 @@ ${body}
   ${p.impact ? `<p class="impact">→ ${e(p.impact)}</p>` : ''}
   ${tags(p.stack)}
   ${p.image ? `<img src="${e(p.image)}" alt="${e(p.name)}" loading="lazy">` : ''}
+  ${p.embed ? `<div class="embed"><iframe src="${e(p.embed)}" title="${e(p.name)}" loading="lazy" allowfullscreen></iframe></div>` : ''}
   ${links.length ? `<p class="links small">${links.join('')}</p>` : ''}
 </div>`;
   };

@@ -47,10 +47,19 @@
       "impact": "100k+ downloads · 4.2 rating on Google Play"
     },
     {
+      "name": "Data and Nutrition (D@N)",
+      "year": "2018–2020",
+      "description": "Nutritional therapy management system for hospitals and clinics: patient admission, diet prescription and administration, exams, product catalog and calorie/protein reports. Built by Space Rocket for Nutrhosp.",
+      "where": "Space Rocket",
+      "url": "https://dataandnutrition.com.br/"
+    },
+    {
       "name": "Self-service kiosk",
       "where": "C6 Bank",
       "year": "2020–2024",
-      "description": "Android app running in kiosk mode for self-service."
+      "description": "Android app running in kiosk mode for self-service.",
+      "video": "https://www.linkedin.com/feed/update/urn:li:activity:6978755257132593152/",
+      "embed": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6978755257132593152"
     },
     {
       "name": "BBNK",
@@ -85,24 +94,31 @@
     {
       "name": "Dizziness",
       "year": "2016–2020",
-      "description": "Health app built at Space Rocket, a company I co-founded.",
-      "impact": "Winner of Inova+Saúde and Campus Future"
+      "description": "Dizziness therapy app for children and teens: exercises that stimulate the vestibulo-ocular reflex, with progress tracked by the DHI-CA score.",
+      "impact": "Winner of Inova+Saúde and Campus Future · 4.5 rating on Google Play",
+      "where": "Space Rocket",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=en-US"
     },
     {
       "name": "Constante",
       "year": "2019–2020",
-      "description": "App to build and keep habits."
+      "description": "Habits and goals app: unlimited custom habits, reminders, progress calendar, weekly/monthly/yearly stats and a timer.",
+      "where": "Space Rocket",
+      "impact": "10k+ downloads · 4.5 rating on Google Play",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=en-US"
     },
     {
-      "name": "Data and Nutrition",
-      "year": "2018–2020",
-      "description": "Web platform to manage nutritional therapy in hospitals."
-    },
-    {
-      "name": "RoboCup 3D Simulation",
+      "name": "Robot Soccer League",
       "year": "2016–2018",
-      "description": "Team strategy for simulated robot soccer, as a researcher at UNEB.",
-      "impact": "Latin American champion · 6th at RoboCup 2017 (Nagoya)"
+      "description": "Strategy and coordination for robot soccer teams, as a researcher at NACSO/UNEB.",
+      "impact": "Latin American champion · 6th at RoboCup 2017 (Nagoya)",
+      "stack": [
+        "VSSS",
+        "3D Simulation",
+        "3D Soccer Strategy",
+        "Robot",
+        "Robot Coordination"
+      ]
     },
     {
       "name": "CittiCard",
