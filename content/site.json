@@ -1,8 +1,8 @@
 {
   "name": "Mateus Nascimento",
-  "role": "Tech Engineer Specialist · Android & IA",
-  "location": "São Paulo",
-  "bio": "Engenheiro mobile focado em Android. Hoje lidero o desenvolvimento Android do C6 Assistant, o assistente com IA do C6 Bank, lançado para 35 milhões de clientes.",
+  "role": "Tech Engineer Specialist · Engenheiro de Software",
+  "location": "Salvador",
+  "bio": "Engenheiro de software focado em desenvolvimento e resolução de problemas, usando IA como ferramenta. Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank, lançado para 35 milhões de clientes.",
   "url": "https://mnascimentos.dev",
   "github": "MNascimentoS",
   "links": [
@@ -111,8 +111,9 @@
     }
   ],
   "about": [
-    "Sou engenheiro mobile, focado em Android. Estou no C6 Bank desde 2020: primeiro no time de Home Experience, trabalhando na home, login, investimentos, perfil e Design System; desde 2024 no time de Inteligência Artificial, liderando o Android do C6 Assistant.",
-    "Antes disso fui team leader na Cubos, instrutor de Android na Cubos Academy e cofundei a Space Rocket, onde criamos produtos digitais do zero. Na faculdade, pesquisei estratégia para futebol de robôs simulados e fomos campeões latino-americanos."
+    "Sou engenheiro de software, focado em desenvolvimento e resolução de problemas, e uso IA como ferramenta no dia a dia. Estou no C6 Bank desde 2020: primeiro no time de Home Experience, trabalhando na home, login, investimentos, perfil e Design System; desde 2024 no time de Inteligência Artificial, liderando o Android do C6 Assistant.",
+    "Antes disso fui team leader na Cubos, instrutor de Android na Cubos Academy e cofundei a Space Rocket, onde criamos produtos digitais do zero. Na faculdade, pesquisei estratégia para futebol de robôs simulados e fomos campeões latino-americanos.",
+    "Além do Android, trabalho com IoT, automação de fluxos e Docker/containers."
   ],
   "experience": [
     {
@@ -171,7 +172,11 @@
     "Testes unitários",
     "CI/CD",
     "REST APIs",
-    "Design System"
+    "Design System",
+    "IoT",
+    "Automação de fluxos",
+    "Docker",
+    "Containers"
   ],
   "cv": [
     {
@@ -181,6 +186,28 @@
     {
       "label": "resume (en)",
       "url": "/cv/Mateus_Nascimento_Santos_EN.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "key": "agora",
+      "value": "Android do C6 Assistant (IA)"
+    },
+    {
+      "key": "impacto",
+      "value": "35M de clientes"
+    },
+    {
+      "key": "stack",
+      "value": "Kotlin · Compose · Clean Arch"
+    },
+    {
+      "key": "também",
+      "value": "IoT · automação de fluxos · Docker"
+    },
+    {
+      "key": "prêmios",
+      "value": "Inova+Saúde · Campus Future · RoboCup LATAM"
     }
   ]
 }

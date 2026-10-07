@@ -47,7 +47,9 @@ section { margin-top: 44px; }
 .nav .wrap > div a[aria-current] { color: var(--text); }
 .nav a:hover { text-decoration: none; color: var(--text); }
 
-.intro { max-width: 760px; margin-bottom: 8px; }
+.intro { margin-bottom: 8px; }
+.intro.cols { padding-bottom: 36px; border-bottom: 1px solid var(--line); }
+@media (max-width: 820px) { .intro.cols > div + div { margin-top: 16px; } }
 .intro p { margin-bottom: 10px; }
 
 /* duas colunas lado a lado; empilha no celular */
@@ -112,3 +114,10 @@ footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-size: 0.8
 .nav .lang:hover { border-color: var(--accent); color: var(--accent) !important; }
 .nav .wrap > div { align-items: center; }
 .card .tags { margin-top: 8px; }
+
+/* fatos rápidos no cabeçalho */
+.facts { margin: 22px 0 0; font-family: var(--mono); font-size: 0.85rem; border-left: 2px solid var(--line); padding-left: 14px; }
+.facts div { display: grid; grid-template-columns: 84px 1fr; gap: 8px; padding: 3px 0; }
+.facts dt { color: var(--accent); }
+.facts dt::before { content: '$ '; color: var(--muted); }
+.facts dd { margin: 0; color: var(--text); }

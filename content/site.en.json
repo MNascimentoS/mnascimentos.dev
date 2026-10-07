@@ -1,14 +1,23 @@
 {
   "name": "Mateus Nascimento",
-  "role": "Tech Engineer Specialist · Android & AI",
-  "location": "São Paulo, Brazil",
-  "bio": "Mobile engineer focused on Android. I lead Android development of C6 Assistant, C6 Bank's AI assistant, launched to 35 million customers.",
+  "role": "Tech Engineer Specialist · Software Engineer",
+  "location": "Salvador, Brazil",
+  "bio": "Software engineer focused on development and problem solving, using AI as a tool. I lead Android for C6 Assistant, C6 Bank's AI assistant, launched to 35 million customers.",
   "url": "https://mnascimentos.dev",
   "github": "MNascimentoS",
   "links": [
-    { "label": "github", "url": "https://github.com/MNascimentoS" },
-    { "label": "linkedin", "url": "https://www.linkedin.com/in/mateusn/" },
-    { "label": "contato@mnascimentos.dev", "url": "mailto:contato@mnascimentos.dev" }
+    {
+      "label": "github",
+      "url": "https://github.com/MNascimentoS"
+    },
+    {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/mateusn/"
+    },
+    {
+      "label": "contato@mnascimentos.dev",
+      "url": "mailto:contato@mnascimentos.dev"
+    }
   ],
   "work": [
     {
@@ -56,7 +65,15 @@
       "year": "in progress",
       "featured": true,
       "description": "A modern, customizable Android launcher built 100% in Jetpack Compose: dynamic grid with drag-and-drop, glassmorphic UI with real-time blur, dynamic color themes, folders and native widgets.",
-      "stack": ["Kotlin", "Compose", "Clean Architecture", "MVVM", "Room", "Coroutines/Flow", "Fastlane"],
+      "stack": [
+        "Kotlin",
+        "Compose",
+        "Clean Architecture",
+        "MVVM",
+        "Room",
+        "Coroutines/Flow",
+        "Fastlane"
+      ],
       "github": "https://github.com/MNascimentoS/Aureole-Launcher"
     },
     {
@@ -94,24 +111,103 @@
     }
   ],
   "about": [
-    "I'm a mobile engineer focused on Android. I've been at C6 Bank since 2020: first on the Home Experience team, working on the home, login, investments, profile and Design System; since 2024 on the Artificial Intelligence team, leading Android for C6 Assistant.",
-    "Before that I was a team leader at Cubos, an Android instructor at Cubos Academy, and co-founded Space Rocket, where we built digital products from scratch. In college I researched strategy for simulated robot soccer and we became Latin American champions."
+    "I'm a software engineer focused on development and problem solving, and I use AI as an everyday tool. I've been at C6 Bank since 2020: first on the Home Experience team, working on the home, login, investments, profile and Design System; since 2024 on the Artificial Intelligence team, leading Android for C6 Assistant.",
+    "Before that I was a team leader at Cubos, an Android instructor at Cubos Academy, and co-founded Space Rocket, where we built digital products from scratch. In college I researched strategy for simulated robot soccer and we became Latin American champions.",
+    "Beyond Android, I work with IoT, workflow automation and Docker/containers."
   ],
   "experience": [
-    { "year": "2024–present", "role": "Tech Engineer Specialist", "company": "C6 Bank", "note": "AI team · leading Android development of C6 Assistant" },
-    { "year": "2020–2024", "role": "Senior Mobile Developer", "company": "C6 Bank", "note": "Home Experience: home, login, investments, profile, Design System, kiosk" },
-    { "year": "2018–2020", "role": "Team Leader & Mobile Developer", "company": "Cubos", "note": "BBNK project" },
-    { "year": "2018–2019", "role": "Android Instructor", "company": "Cubos Academy" },
-    { "year": "2016–2020", "role": "Co-founder", "company": "Space Rocket", "note": "Dizziness, Data and Nutrition, Constante" },
-    { "year": "2016–2018", "role": "Researcher", "company": "NACSO · UNEB", "note": "RoboCup 3D Simulated Soccer" }
+    {
+      "year": "2024–present",
+      "role": "Tech Engineer Specialist",
+      "company": "C6 Bank",
+      "note": "AI team · leading Android development of C6 Assistant"
+    },
+    {
+      "year": "2020–2024",
+      "role": "Senior Mobile Developer",
+      "company": "C6 Bank",
+      "note": "Home Experience: home, login, investments, profile, Design System, kiosk"
+    },
+    {
+      "year": "2018–2020",
+      "role": "Team Leader & Mobile Developer",
+      "company": "Cubos",
+      "note": "BBNK project"
+    },
+    {
+      "year": "2018–2019",
+      "role": "Android Instructor",
+      "company": "Cubos Academy"
+    },
+    {
+      "year": "2016–2020",
+      "role": "Co-founder",
+      "company": "Space Rocket",
+      "note": "Dizziness, Data and Nutrition, Constante"
+    },
+    {
+      "year": "2016–2018",
+      "role": "Researcher",
+      "company": "NACSO · UNEB",
+      "note": "RoboCup 3D Simulated Soccer"
+    }
   ],
   "education": [
-    { "year": "2016–2021", "title": "B.Sc. in Information Systems", "where": "Bahia State University (UNEB)" }
+    {
+      "year": "2016–2021",
+      "title": "B.Sc. in Information Systems",
+      "where": "Bahia State University (UNEB)"
+    }
   ],
   "languages": "Portuguese (native) · English (fluent)",
-  "stack": ["Kotlin", "Java", "Android SDK", "Jetpack Compose", "Clean Architecture", "MVVM", "Modularization", "Dependency Injection", "Unit Testing", "CI/CD", "REST APIs", "Design System"],
+  "stack": [
+    "Kotlin",
+    "Java",
+    "Android SDK",
+    "Jetpack Compose",
+    "Clean Architecture",
+    "MVVM",
+    "Modularization",
+    "Dependency Injection",
+    "Unit Testing",
+    "CI/CD",
+    "REST APIs",
+    "Design System",
+    "IoT",
+    "Workflow automation",
+    "Docker",
+    "Containers"
+  ],
   "cv": [
-    { "label": "resume (en)", "url": "/cv/Mateus_Nascimento_Santos_EN.pdf" },
-    { "label": "currículo (pt)", "url": "/cv/Mateus_Nascimento_Santos.pdf" }
+    {
+      "label": "resume (en)",
+      "url": "/cv/Mateus_Nascimento_Santos_EN.pdf"
+    },
+    {
+      "label": "currículo (pt)",
+      "url": "/cv/Mateus_Nascimento_Santos.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "key": "now",
+      "value": "Android for C6 Assistant (AI)"
+    },
+    {
+      "key": "impact",
+      "value": "35M customers"
+    },
+    {
+      "key": "stack",
+      "value": "Kotlin · Compose · Clean Arch"
+    },
+    {
+      "key": "also",
+      "value": "IoT · workflow automation · Docker"
+    },
+    {
+      "key": "awards",
+      "value": "Inova+Saúde · Campus Future · RoboCup LATAM"
+    }
   ]
 }

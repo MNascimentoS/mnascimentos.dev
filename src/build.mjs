@@ -137,7 +137,7 @@ ${altPath ? `<link rel="alternate" hreflang="${UI[other].htmlLang}" href="${site
 <body>
 <nav class="nav">
   <div class="wrap">
-    <a class="logo" href="${R.home}">mn ~/</a>
+    <a class="logo" href="${R.home}">mns ~/</a>
     <div>${nav.map(([k, href, label]) => `<a href="${href}"${k === key ? ' aria-current="page"' : ''}>${label}</a>`).join('')}
       ${altPath ? `<a class="lang" href="${altPath}" hreflang="${UI[other].htmlLang}">${other.toUpperCase()}</a>` : ''}
     </div>
@@ -194,11 +194,14 @@ ${body}
     path: R.home, key: 'home',
     title: `${site.name} — ${site.role}`,
     body: `
-<header class="intro">
-  <h1>${e(site.name)}</h1>
-  <p class="muted">${e(site.role)} · ${e(site.location)}</p>
-  ${site.about.map((x) => `<p>${e(x)}</p>`).join('')}
-  <p class="links">${site.links.map((l) => link(l.label, l.url)).join('')}</p>
+<header class="intro cols">
+  <div>
+    <h1>${e(site.name)}</h1>
+    <p class="muted">${e(site.role)} · ${e(site.location)}</p>
+    <p class="links">${site.links.map((l) => link(l.label, l.url)).join('')}</p>
+    ${site.facts ? `<dl class="facts">${site.facts.map((f) => `<div><dt>${e(f.key)}</dt><dd>${e(f.value)}</dd></div>`).join('')}</dl>` : ''}
+  </div>
+  <div>${site.about.map((x) => `<p>${e(x)}</p>`).join('')}</div>
 </header>
 
 <div class="cols">
