@@ -27,7 +27,14 @@
       "featured": true,
       "description": "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank — do desenvolvimento da interface conversacional ao lançamento para toda a base de clientes. Hoje é um dos principais pontos de acesso do app para dúvidas, suporte e operações bancárias.",
       "impact": "Lançado para 35M de clientes em dez/2024",
-      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
+      "stack": [
+        "Kotlin",
+        "Jetpack Compose",
+        "IA conversacional",
+        "Clean Architecture",
+        "MVVM"
+      ]
     },
     {
       "name": "Home Experience",
@@ -36,7 +43,14 @@
       "featured": true,
       "description": "Time de Home Experience: evolução da home, login, investimentos e perfil, as telas que todo cliente abre todo dia. Componentes reutilizáveis e customizáveis do Design System e serviços de permissionamento de produtos.",
       "impact": "Fluxos centrais do app do banco",
-      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US"
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
+      "stack": [
+        "Kotlin",
+        "Design System",
+        "BFF",
+        "Clean Architecture",
+        "Modularização"
+      ]
     },
     {
       "name": "EC Bahia",
@@ -44,7 +58,13 @@
       "featured": true,
       "description": "App oficial do Esporte Clube Bahia: streaming, jogos lance a lance, notícias, loja oficial, cupons de parceiros e adesão ao sócio. Atuei no desenvolvimento do app Android.",
       "playstore": "https://play.google.com/store/apps/details?id=io.ecbahia&hl=pt-BR",
-      "impact": "100 mil+ downloads · nota 4,2 na Play Store"
+      "impact": "100 mil+ downloads · nota 4,2 na Play Store",
+      "stack": [
+        "Kotlin",
+        "Android SDK",
+        "Streaming",
+        "MVVM"
+      ]
     },
     {
       "name": "Data and Nutrition (D@N)",
@@ -111,7 +131,7 @@
     {
       "name": "Liga de Futebol de Robôs",
       "year": "2016–2018",
-      "description": "Estratégia e coordenação de times de futebol de robôs, como pesquisador no NACSO/UNEB.",
+      "description": "Estratégia e coordenação de times de futebol de robôs, como pesquisador no ACSO/UNEB.",
       "impact": "Campeão latino-americano · 6º no mundial de 2017 (Nagoya)",
       "stack": [
         "VSSS",
@@ -143,13 +163,13 @@
       "year": "2020–2024",
       "role": "Desenvolvedor Mobile Sênior",
       "company": "C6 Bank",
-      "note": "Home Experience: home, login, investimentos, perfil, Design System, totem"
+      "note": "Home Experience: home, login, investimentos, perfil, design system, totem, deploy, BFF, menu e permissionamento"
     },
     {
       "year": "2018–2020",
       "role": "Team Leader e Desenvolvedor Mobile",
       "company": "Cubos",
-      "note": "Projeto BBNK"
+      "note": "EC Bahia app, Zak, BBNK"
     },
     {
       "year": "2018–2019",
@@ -165,8 +185,8 @@
     {
       "year": "2016–2018",
       "role": "Pesquisador",
-      "company": "NACSO · UNEB",
-      "note": "RoboCup 3D Simulated Soccer"
+      "company": "ACSO · UNEB",
+      "note": "RoboCup 3D Simulated Soccer, Very Small Size Soccer"
     }
   ],
   "education": [
