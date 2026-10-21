@@ -1,0 +1,320 @@
+{
+  "name": "Mateus Nascimento",
+  "role": "Engenheiro de Software · Android (Kotlin, Compose) & IA",
+  "location": "Salvador",
+  "bio": "Lidero o Android do C6 Assistant, o app de IA do C6 Bank lançado para 35 milhões de clientes. Engenheiro de software focado em desenvolvimento e resolução de problemas, com Kotlin e Jetpack Compose.",
+  "url": "https://mnascimentos.dev",
+  "github": "MNascimentoS",
+  "links": [
+    {
+      "label": "github",
+      "url": "https://github.com/MNascimentoS"
+    },
+    {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/mateusn/"
+    },
+    {
+      "label": "contato@mnascimentos.dev",
+      "url": "mailto:contato@mnascimentos.dev"
+    }
+  ],
+  "work": [
+    {
+      "name": "C6 Assistant",
+      "where": "C6 Bank",
+      "year": "2024–atual",
+      "featured": true,
+      "description": "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank — do desenvolvimento da interface conversacional ao lançamento para toda a base de clientes. Hoje é um dos principais pontos de acesso do app para dúvidas, suporte e operações bancárias.",
+      "impact": "Lançado para 35M de clientes em dez/2024",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
+      "stack": [
+        "Kotlin",
+        "Jetpack Compose",
+        "IA conversacional",
+        "Clean Architecture",
+        "MVVM"
+      ]
+    },
+    {
+      "name": "Home Experience",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "featured": true,
+      "description": "Time de Home Experience: evolução da home, login, investimentos e perfil, as telas que todo cliente abre todo dia. Componentes reutilizáveis e customizáveis do Design System e serviços de permissionamento de produtos.",
+      "impact": "Fluxos centrais do app do banco",
+      "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
+      "stack": [
+        "Kotlin",
+        "Design System",
+        "BFF",
+        "Clean Architecture",
+        "Modularização"
+      ]
+    },
+    {
+      "name": "Totem de autoatendimento",
+      "where": "C6 Bank",
+      "year": "2020–2024",
+      "description": "App Android em modo quiosque para autoatendimento.",
+      "video": "https://www.linkedin.com/feed/update/urn:li:activity:6978755257132593152/",
+      "media": "/videos/totem.mp4",
+      "poster": "/videos/totem.jpg"
+    },
+    {
+      "name": "EC Bahia",
+      "year": "2018–2019",
+      "featured": true,
+      "description": "App oficial do Esporte Clube Bahia: streaming, jogos lance a lance, notícias, loja oficial, cupons de parceiros e adesão ao sócio. Atuei no desenvolvimento do app Android.",
+      "playstore": "https://play.google.com/store/apps/details?id=io.ecbahia&hl=pt-BR",
+      "impact": "100 mil+ downloads · nota 4,2 na Play Store",
+      "stack": [
+        "Kotlin",
+        "Android SDK",
+        "Streaming",
+        "MVVM"
+      ],
+      "images": [
+        "/images/projects/ecbahia-1.jpg",
+        "/images/projects/ecbahia-2.jpg"
+      ]
+    },
+    {
+      "name": "Data and Nutrition (D@N)",
+      "year": "2018–2020",
+      "description": "Sistema de gestão da terapia nutricional para hospitais e clínicas: admissão de pacientes, prescrição e administração de dietas, exames, catálogo de produtos e relatórios de calorias e proteínas.",
+      "where": "Space Rocket",
+      "impact": "Em uso hoje em hospitais da Bahia"
+    }
+  ],
+  "personal": [
+    {
+      "name": "Aureole Launcher",
+      "year": "",
+      "featured": true,
+      "description": "Launcher Android moderno e customizável, feito 100% em Jetpack Compose: grid dinâmico com drag-and-drop, UI glassmórfica com blur em tempo real, temas com paletas dinâmicas, pastas e widgets nativos.",
+      "stack": [
+        "Kotlin",
+        "Compose",
+        "Clean Architecture",
+        "MVVM",
+        "Room",
+        "Coroutines/Flow",
+        "Fastlane"
+      ],
+      "github": "https://github.com/MNascimentoS/Aureole-Launcher",
+      "status": "em andamento"
+    },
+    {
+      "name": "Tiker",
+      "year": "2020–2022",
+      "description": "App Android para criar e organizar figurinhas do WhatsApp: remove o fundo das fotos para virar sticker, agrupa em pacotes e envia direto para o WhatsApp — com uma galeria para buscar e compartilhar pacotes com amigos.",
+      "github": "https://github.com/MNascimentoS/Tiker-App",
+      "cover": "/images/projects/tiker-banner.jpg",
+      "images": [
+        "/images/projects/tiker-1.jpg",
+        "/images/projects/tiker-2.jpg",
+        "/images/projects/tiker-3.jpg"
+      ],
+      "impact": "Open source · v2.0",
+      "stack": [
+        "Android",
+        "Fresco",
+        "Lottie",
+        "FishBun",
+        "Android CutOut",
+        "Fastlane"
+      ]
+    },
+    {
+      "name": "DizzinessApp",
+      "year": "2016–2020",
+      "description": "App de terapia para tontura em crianças e adolescentes: exercícios que estimulam o reflexo vestíbulo-ocular e acompanhamento da evolução pelo escore DHI-CA.",
+      "impact": "Campeão do Inova+Saúde e do Campus Future · nota 4,5 na Play Store",
+      "where": "Space Rocket",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=pt-BR",
+      "images": [
+        "/images/projects/dizziness-1.jpg",
+        "/images/projects/dizziness-2.jpg"
+      ]
+    },
+    {
+      "name": "Constante",
+      "year": "2019–2020",
+      "description": "App de hábitos e metas: hábitos ilimitados e customizáveis, lembretes, calendário de progresso, estatísticas por semana, mês e ano, e timer.",
+      "where": "Space Rocket",
+      "impact": "10 mil+ downloads · nota 4,5 na Play Store",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=pt-BR",
+      "images": [
+        "/images/projects/constante.jpg"
+      ]
+    },
+    {
+      "name": "Robótica · BahiaRT",
+      "year": "2016–2018",
+      "description": "Pesquisa em robótica no time BahiaRT (ACSO/UNEB): estratégia e coordenação de robôs no futebol simulado 3D e no Very Small Size Soccer, com participação na RoboCup.",
+      "impact": "Campeão latino-americano · 6º no mundial de 2017 (Nagoya)",
+      "stack": [
+        "Very Small Size Soccer",
+        "3D Simulation",
+        "3D Soccer Strategy",
+        "Robot",
+        "Robot Coordination"
+      ],
+      "media": [
+        "https://www.youtube.com/watch?v=GpZV9xs8v-I",
+        "https://www.youtube.com/watch?v=tHmHJ-6dZGM"
+      ]
+    },
+    {
+      "name": "CittiCard",
+      "year": "2017–2018",
+      "description": "App colaborativo sobre o funcionamento dos postos de recarga do SalvadorCard."
+    }
+  ],
+  "about": [
+    "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank lançado para 35 milhões de clientes — do desenvolvimento da interface conversacional ao lançamento para toda a base. Sou engenheiro de software focado em desenvolvimento e resolução de problemas, e uso IA também como ferramenta no dia a dia. No C6 desde 2020, passei antes pelo time de Home Experience: home, login, investimentos, perfil e Design System.",
+    "Antes disso fui team leader na Cubos, instrutor de Android na Cubos Academy e cofundei a Space Rocket, onde criamos produtos digitais do zero. Na faculdade, pesquisei estratégia para futebol de robôs simulados e fomos campeões latino-americanos.",
+    "Além do Android, trabalho com IoT, automação de fluxos e Docker/containers."
+  ],
+  "experience": [
+    {
+      "year": "2024–atual",
+      "role": "Tech Engineer Specialist",
+      "company": "C6 Bank",
+      "note": "Time de IA · liderança do desenvolvimento Android do C6 Assistant"
+    },
+    {
+      "year": "2022–2024",
+      "role": "Senior Tech Engineer",
+      "company": "C6 Bank",
+      "note": "Home Experience: home, login, investimentos, perfil, design system, totem, deploy, BFF, menu e permissionamento"
+    },
+    {
+      "year": "2020–2022",
+      "role": "Tech Engineer",
+      "company": "C6 Bank",
+      "note": "Home Experience"
+    },
+    {
+      "year": "2018–2020",
+      "role": "Team Leader e Desenvolvedor Mobile",
+      "company": "Cubos",
+      "note": "EC Bahia app, Zak, BBNK"
+    },
+    {
+      "year": "mar–jun 2019",
+      "role": "Instrutor Android",
+      "company": "Cubos Academy"
+    },
+    {
+      "year": "2016–2020",
+      "role": "Cofundador",
+      "company": "Space Rocket",
+      "note": "DizzinessApp, Data and Nutrition, Constante"
+    },
+    {
+      "year": "2016–2018",
+      "role": "Pesquisador",
+      "company": "ACSO · UNEB",
+      "note": "RoboCup 3D Simulated Soccer, Very Small Size Soccer"
+    }
+  ],
+  "education": [
+    {
+      "year": "2016–2021",
+      "title": "Bacharelado em Sistemas de Informação",
+      "where": "Universidade do Estado da Bahia"
+    }
+  ],
+  "languages": "Português (nativo) · Inglês (fluente)",
+  "stack": [
+    {
+      "group": "Mobile",
+      "items": [
+        "Kotlin",
+        "Java",
+        "Android SDK",
+        "Jetpack Compose",
+        "Coroutines & Flow",
+        "Room",
+        "Navigation"
+      ]
+    },
+    {
+      "group": "Arquitetura",
+      "items": [
+        "Clean Architecture",
+        "MVVM",
+        "MVP",
+        "Modularização",
+        "Injeção de dependência",
+        "Design System"
+      ]
+    },
+    {
+      "group": "Qualidade & entrega",
+      "items": [
+        "Testes unitários",
+        "Robolectric",
+        "Detekt",
+        "CI/CD",
+        "GitHub Actions",
+        "Fastlane",
+        "Git"
+      ]
+    },
+    {
+      "group": "IA & integração",
+      "items": [
+        "IA conversacional",
+        "LLMs locais (Ollama)",
+        "REST APIs",
+        "BFF"
+      ]
+    },
+    {
+      "group": "Infra & automação",
+      "items": [
+        "Docker",
+        "Portainer",
+        "n8n",
+        "Home Assistant (IoT)",
+        "Nginx",
+        "Linux"
+      ]
+    }
+  ],
+  "cv": [
+    {
+      "label": "currículo (pt)",
+      "url": "/cv/Mateus_Nascimento_Santos.pdf"
+    },
+    {
+      "label": "resume (en)",
+      "url": "/cv/Mateus_Nascimento_Santos_EN.pdf"
+    }
+  ],
+  "facts": [
+    {
+      "key": "agora",
+      "value": "C6 Assistant (IA) · Aureole Launcher (pessoal)"
+    },
+    {
+      "key": "impacto",
+      "value": "35M de clientes"
+    },
+    {
+      "key": "stack",
+      "value": "Kotlin · Compose · Clean Arch"
+    },
+    {
+      "key": "também",
+      "value": "IoT · automação de fluxos · Docker"
+    },
+    {
+      "key": "prêmios",
+      "value": "Inova+Saúde · Campus Future · RoboCup LATAM"
+    }
+  ]
+}
