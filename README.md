@@ -2,7 +2,7 @@
 
 My personal site: projects, experience and résumé.
 
-**[mnascimentos.github.io/mnascimentos.dev](https://mnascimentos.github.io/mnascimentos.dev/)**
+**[mnascimentos.dev](https://mnascimentos.dev)**
 
 ![Home](docs/home.jpg)
 
