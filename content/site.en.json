@@ -75,8 +75,14 @@
         "MVVM"
       ],
       "images": [
-        "/images/projects/ecbahia-1.jpg",
-        "/images/projects/ecbahia-2.jpg"
+        {
+          "src": "/images/projects/ecbahia-1.jpg",
+          "alt": "EC Bahia: official store and new kits in the app"
+        },
+        {
+          "src": "/images/projects/ecbahia-2.jpg",
+          "alt": "EC Bahia: live play-by-play and Libertadores table in the app"
+        }
       ]
     },
     {
@@ -110,11 +116,23 @@
       "year": "2020–2022",
       "description": "Android app to create and organize WhatsApp stickers: removes the photo background to turn it into a sticker, groups them into packs and sends them straight to WhatsApp — with a gallery to find and share packs with friends.",
       "github": "https://github.com/MNascimentoS/Tiker-App",
-      "cover": "/images/projects/tiker-banner.jpg",
+      "cover": {
+        "src": "/images/projects/tiker-banner.jpg",
+        "alt": "Tiker: \"Meet Tiker, your sticker organizer\" banner"
+      },
       "images": [
-        "/images/projects/tiker-1.jpg",
-        "/images/projects/tiker-2.jpg",
-        "/images/projects/tiker-3.jpg"
+        {
+          "src": "/images/projects/tiker-1.jpg",
+          "alt": "Tiker: app splash screen"
+        },
+        {
+          "src": "/images/projects/tiker-2.jpg",
+          "alt": "Tiker: gallery with all stickers"
+        },
+        {
+          "src": "/images/projects/tiker-3.jpg",
+          "alt": "Tiker: adding a pack to WhatsApp"
+        }
       ],
       "impact": "Open source · v2.0",
       "stack": [
@@ -134,8 +152,14 @@
       "where": "Space Rocket",
       "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=en-US",
       "images": [
-        "/images/projects/dizziness-1.jpg",
-        "/images/projects/dizziness-2.jpg"
+        {
+          "src": "/images/projects/dizziness-1.jpg",
+          "alt": "DizzinessApp: home screen with the Inova+Saúde 2018 badge"
+        },
+        {
+          "src": "/images/projects/dizziness-2.jpg",
+          "alt": "DizzinessApp: visual stimulation exercise running"
+        }
       ]
     },
     {
@@ -146,7 +170,10 @@
       "impact": "10k+ downloads · 4.5 rating on Google Play",
       "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=en-US",
       "images": [
-        "/images/projects/constante.jpg"
+        {
+          "src": "/images/projects/constante.jpg",
+          "alt": "Constante: weekly habit progress screen"
+        }
       ]
     },
     {

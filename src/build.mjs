@@ -87,14 +87,14 @@ const UI = {
     htmlLang: 'pt-BR', home: 'início', projects: 'projetos', blog: 'blog',
     featured: 'Destaques', allProjects: 'todos os projetos →', latestPosts: 'Últimos posts', allPosts: 'todos os posts →', soon: 'Em breve.',
     experience: 'Experiência', education: 'Formação', stack: 'Stack', cv: 'Currículo', personal: 'Pessoal',
-    projectsTitle: 'Projetos', projectsLead: 'O que construí em empresas e por conta própria \\o/', work: 'Empresariais', personalPl: 'Pessoais',
+    projectsTitle: 'Projetos', projectsSeo: 'Projetos Android e Kotlin', projectsDesc: 'Projetos de Mateus Nascimento: apps Android em Kotlin e Jetpack Compose — C6 Assistant (35M de clientes), EC Bahia (100 mil+ downloads), Aureole Launcher e pesquisa em robótica.', screen: 'tela', projectsFeed: 'Projetos', projectsLead: 'O que construí em empresas e por conta própria \\o/', work: 'Empresariais', personalPl: 'Pessoais',
     blogLead: 'Processos de desenvolvimento, decisões e aprendizados.', readmeFrom: 'README de', notFound: 'Página não encontrada.', back: 'Voltar ao início',
   },
   en: {
     htmlLang: 'en', home: 'home', projects: 'projects', blog: 'blog',
     featured: 'Highlights', allProjects: 'all projects →', latestPosts: 'Latest posts', allPosts: 'all posts →', soon: 'Coming soon.',
     experience: 'Experience', education: 'Education', stack: 'Stack', cv: 'Resume', personal: 'Personal',
-    projectsTitle: 'Projects', projectsLead: 'What I built at companies and on my own \\o/', work: 'Work', personalPl: 'Personal',
+    projectsTitle: 'Projects', projectsSeo: 'Android & Kotlin Projects', projectsDesc: 'Projects by Mateus Nascimento: Android apps in Kotlin and Jetpack Compose — C6 Assistant (35M customers), EC Bahia (100k+ downloads), Aureole Launcher and robotics research.', screen: 'screen', projectsFeed: 'Projects', projectsLead: 'What I built at companies and on my own \\o/', work: 'Work', personalPl: 'Personal',
     blogLead: 'Development process, decisions and lessons learned.', readmeFrom: 'README from', notFound: 'Page not found.', back: 'Back home',
   },
 };
@@ -118,11 +118,13 @@ const tags = (list) => (list && list.length ? `<span class="tags">${list.map((t)
 
 // Imagens do projeto: "images": [...] — uma ocupa o card, várias ficam lado a lado
 // "cover": imagem larga (banner) no topo; "images": telas em linha (até 3 por linha)
-const gallery = (p) => {
+// cada imagem pode ser "caminho" ou { "src": "...", "alt": "..." }
+const gallery = (p, screenWord) => {
   const imgs = asArray(p.images || p.image);
-  const shot = (src, alt) => `<a href="${e(src)}"><img src="${e(src)}" alt="${e(alt)}" loading="lazy"></a>`;
-  const cover = p.cover ? `<div class="gallery cover">${shot(p.cover, p.name)}</div>` : '';
-  const grid = imgs.length ? `<div class="gallery g${Math.min(imgs.length, 3)}">${imgs.map((src, i) => shot(src, `${p.name} ${i + 1}`)).join('')}</div>` : '';
+  const norm = (im, i) => (typeof im === 'string' ? { src: im, alt: `${p.name} — ${screenWord} ${i + 1}` } : im);
+  const shot = ({ src, alt }) => `<a href="${e(src)}"><img src="${e(src)}" alt="${e(alt)}" loading="lazy"></a>`;
+  const cover = p.cover ? `<div class="gallery cover">${shot(typeof p.cover === 'string' ? { src: p.cover, alt: p.name } : p.cover)}</div>` : '';
+  const grid = imgs.length ? `<div class="gallery g${Math.min(imgs.length, 3)}">${imgs.map((im, i) => shot(norm(im, i))).join('')}</div>` : '';
   return cover + grid;
 };
 
@@ -143,10 +145,43 @@ const stackBlock = (stack) => (stack || []).every((s) => typeof s === 'string')
   ? tags(stack)
   : stack.map((g) => `<div class="stack-group"><span class="stack-label">${e(g.group)}</span>${tags(g.items)}</div>`).join('');
 
-// Dados estruturados (Google): Person + WebSite
+// Dados estruturados da página de projetos: ItemList de apps/trabalhos
+const projectsLd = (site, lang) => {
+  const pageUrl = `${site.url}${ROUTES[lang].projects}`;
+  const all = [...site.work, ...site.personal];
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: UI[lang].projectsSeo,
+    url: pageUrl,
+    itemListElement: all.map((p, i) => {
+      const isApp = Boolean(p.playstore || p.apk);
+      const item = {
+        '@type': isApp ? 'SoftwareApplication' : 'CreativeWork',
+        name: p.name,
+        description: p.description,
+        url: `${pageUrl}#${slugify(p.name)}`,
+        author: { '@id': `${site.url}/#person` },
+        keywords: asArray(p.stack).join(', ') || undefined,
+        sameAs: [p.playstore, p.github, p.url].filter(Boolean),
+      };
+      if (isApp) Object.assign(item, { operatingSystem: 'Android', applicationCategory: 'MobileApplication' });
+      if (!item.sameAs.length) delete item.sameAs;
+      if (!item.keywords) delete item.keywords;
+      if (p.cover || p.images) {
+        const first = p.cover || asArray(p.images)[0];
+        item.image = `${site.url}${typeof first === 'string' ? first : first.src}`;
+      }
+      return { '@type': 'ListItem', position: i + 1, item };
+    }),
+  }).replace(/</g, '\\u003c');
+};
+
+// Dados estruturados (Google): ProfilePage + Person + WebSite
 const jsonLd = (site, lang) => JSON.stringify({
   '@context': 'https://schema.org',
   '@graph': [
+    { '@type': 'ProfilePage', '@id': `${site.url}${ROUTES[lang].home}#profile`, url: `${site.url}${ROUTES[lang].home}`, inLanguage: UI[lang].htmlLang, mainEntity: { '@id': `${site.url}/#person` }, isPartOf: { '@id': `${site.url}/#website` } },
     {
       '@type': 'Person',
       '@id': `${site.url}/#person`,
@@ -177,7 +212,7 @@ function buildLang(lang) {
   const page = ({ path: p, key, alt, title, description = site.bio, body }) => {
     const altPath = alt === undefined ? ROUTES[other][key] || ROUTES[other].home : alt;
     const nav = [['home', R.home, t.home], ['projects', R.projects, t.projects], ...(BLOG ? [['blog', R.blog, t.blog]] : [])];
-    if (key) SITEMAP.push(p);
+    if (key) SITEMAP.push({ path: p, lang, alt: altPath });
     const html = `<!doctype html>
 <html lang="${t.htmlLang}">
 <head>
@@ -197,10 +232,16 @@ function buildLang(lang) {
 <meta name="twitter:image" content="${site.url}${OG_IMAGE}">
 <meta name="theme-color" content="#0f1216">
 <link rel="canonical" href="${site.url}${p}">
+<link rel="alternate" hreflang="${t.htmlLang}" href="${site.url}${p}">
 ${altPath ? `<link rel="alternate" hreflang="${UI[other].htmlLang}" href="${site.url}${altPath}">` : ''}
+<link rel="alternate" hreflang="x-default" href="${site.url}${lang === 'pt' ? p : altPath || '/'}">
+<meta name="author" content="${e(site.name)}">
+${site.links.filter((l) => /^https?:/.test(l.url)).map((l) => `<link rel="me" href="${e(l.url)}">`).join('\n')}
+<link rel="alternate" type="application/rss+xml" title="${e(site.name)} — ${t.projectsFeed}" href="${R.home}projects.xml">
 <link rel="icon" href="/favicon.svg">
 ${BLOG ? `<link rel="alternate" type="application/rss+xml" href="${R.home}rss.xml">` : ''}
 ${key === 'home' ? `<script type="application/ld+json">${jsonLd(site, lang)}</script>` : ''}
+${key === 'projects' ? `<script type="application/ld+json">${projectsLd(site, lang)}</script>` : ''}
 <link rel="stylesheet" href="/styles.css?v=${CSS_VERSION}">
 </head>
 <body>
@@ -215,7 +256,7 @@ ${key === 'home' ? `<script type="application/ld+json">${jsonLd(site, lang)}</sc
 <main class="wrap">
 ${body}
 </main>
-<footer><div class="wrap">${e(site.url.replace(/^https?:\/\//, ''))}${BLOG ? ` · <a href="${R.home}rss.xml">rss</a>` : ''}</div></footer>
+<footer><div class="wrap">${e(site.url.replace(/^https?:\/\//, ''))}${BLOG ? ` · <a href="${R.home}rss.xml">rss</a>` : ` · <a href="${R.home}projects.xml">rss</a>`}</div></footer>
 <script src="/lightbox.js?v=${CSS_VERSION}" defer></script>
 </body>
 </html>`;
@@ -233,12 +274,12 @@ ${body}
     ].filter(Boolean);
     const meta = [p.where || (showKind && kind === 'personal' ? t.personal : ''), p.year].filter(Boolean).join(' · ');
     return `
-<div class="card">
+<div class="card" id="${slugify(p.name)}">
   <div class="row"><strong>${e(p.name)}${p.status ? ` <span class="status">${e(p.status)}</span>` : ''}</strong><span class="muted small">${e(meta)}</span></div>
   <p>${e(p.description)}</p>
   ${p.impact ? `<p class="impact">→ ${e(p.impact)}</p>` : ''}
   ${tags(p.stack)}
-  ${gallery(p)}
+  ${gallery(p, t.screen)}
   ${media(p)}
   ${links.length ? `<p class="links small">${links.join('')}</p>` : ''}
 </div>`;
@@ -270,7 +311,7 @@ ${body}
   <div>
     <h1>${e(site.name)}</h1>
     <p class="muted">${e(site.role)} · ${e(site.location)}</p>
-    <p class="links">${site.links.map((l) => link(l.label, l.url)).join('')}</p>
+    <p class="links">${site.links.map((l) => link(l.label, l.url).replace('rel="noopener"', 'rel="me noopener"')).join('')}</p>
     ${site.facts ? `<dl class="facts">${site.facts.map((f) => `<div><dt>${e(f.key)}</dt><dd>${e(f.value)}</dd></div>`).join('')}</dl>` : ''}
   </div>
   <div>${site.about.map((x) => `<p>${e(x)}</p>`).join('')}</div>
@@ -314,8 +355,8 @@ ${body}
   // projetos
   page({
     path: R.projects, key: 'projects',
-    title: `${t.projectsTitle} — ${site.name}`,
-    description: t.projectsLead,
+    title: `${t.projectsSeo} — ${site.name}`,
+    description: t.projectsDesc,
     body: `
 <h1>${t.projectsTitle}</h1>
 <p class="muted">${t.projectsLead}</p>
@@ -330,6 +371,18 @@ ${body}
   </section>
 </div>`,
   });
+
+  // RSS de projetos (funciona com o blog desligado): cada projeto vira um item
+  const projUrl = `${site.url}${R.projects}`;
+  write(`${R.home.slice(1)}projects.xml`, `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>${e(site.name)} — ${e(t.projectsSeo)}</title>
+<link>${projUrl}</link>
+<atom:link href="${site.url}${R.home}projects.xml" rel="self" type="application/rss+xml"/>
+<description>${e(t.projectsDesc)}</description>
+<language>${t.htmlLang}</language>
+${[...site.work, ...site.personal].map((x) => `<item><title>${e(x.name)}${x.year ? ` (${e(x.year)})` : ''}</title><link>${projUrl}#${slugify(x.name)}</link><guid isPermaLink="true">${projUrl}#${slugify(x.name)}</guid><description>${e([x.description, x.impact].filter(Boolean).join(' — '))}</description>${asArray(x.stack).map((c) => `<category>${e(c)}</category>`).join('')}</item>`).join('\n')}
+</channel></rss>`);
 
   if (!BLOG) return page;
 
@@ -393,10 +446,33 @@ fs.renameSync(path.join(DIST, '404/index.html'), path.join(DIST, '404.html'));
 fs.rmdirSync(path.join(DIST, '404'));
 
 const base = SITES.pt.url;
+// sitemap com hreflang (pt-BR, en, x-default) e lastmod
+const today = new Date().toISOString().slice(0, 10);
+const seen = new Set();
 write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${[...new Set(SITEMAP)].map((p) => `<url><loc>${base}${p}</loc></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${SITEMAP.filter((u) => !seen.has(u.path) && seen.add(u.path)).map((u) => {
+  const pt = u.lang === 'pt' ? u.path : u.alt;
+  const en = u.lang === 'en' ? u.path : u.alt;
+  const alts = pt && en ? `
+  <xhtml:link rel="alternate" hreflang="pt-BR" href="${base}${pt}"/>
+  <xhtml:link rel="alternate" hreflang="en" href="${base}${en}"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="${base}${pt}"/>` : '';
+  return `<url><loc>${base}${u.path}</loc><lastmod>${today}</lastmod>${alts}
+</url>`;
+}).join('\n')}
 </urlset>`);
+write('humans.txt', `/* TEAM */
+Developer: ${SITES.pt.name}
+Site: ${base}
+Location: Salvador, Bahia, Brasil
+${SITES.pt.links.filter((l) => /^https?:/.test(l.url)).map((l) => `${l.label}: ${l.url}`).join('\n')}
+
+/* SITE */
+Languages: Português, English
+Standards: HTML5, CSS3, vanilla JS
+Software: Node.js, GitHub Actions, GitHub Pages
+`);
 write('robots.txt', `User-agent: *\nAllow: /\nSitemap: ${base}/sitemap.xml\n`);
 
 fs.cpSync(path.join(ROOT, 'public'), DIST, { recursive: true });
