@@ -27,6 +27,7 @@
       "featured": true,
       "description": "Lidero o Android do C6 Assistant, o assistente com IA do C6 Bank — do desenvolvimento da interface conversacional ao lançamento para toda a base de clientes. Hoje é um dos principais pontos de acesso do app para dúvidas, suporte e operações bancárias.",
       "impact": "Lançado para 35M de clientes em dez/2024",
+      "status": "em andamento",
       "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
       "stack": [
         "Kotlin",
