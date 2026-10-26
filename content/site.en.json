@@ -110,7 +110,12 @@
         "Fastlane"
       ],
       "github": "https://github.com/MNascimentoS/Aureole-Launcher",
-      "status": "ongoing"
+      "url": "https://aureole.mnascimentos.dev",
+      "status": "ongoing",
+      "cover": {
+        "src": "/images/projects/aureole-en.jpg",
+        "alt": "Aureole Launcher: \"Your home screen, organized your way.\" — no ads, no tracking, data stays on device"
+      }
     },
     {
       "name": "Tiker",
