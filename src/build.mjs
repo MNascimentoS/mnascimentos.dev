@@ -302,7 +302,9 @@ ${body}
   </div>`;
 
   // início
-  const featured = [...site.work, ...site.personal].filter((p) => p.featured);
+  // "featured": true entra nos destaques; um número (1, 2, ...) define a ordem
+  const rank = (p) => (typeof p.featured === 'number' ? p.featured : Infinity);
+  const featured = [...site.work, ...site.personal].filter((p) => p.featured).sort((a, b) => rank(a) - rank(b));
   page({
     path: R.home, key: 'home',
     title: `${site.name} — ${site.role}`,

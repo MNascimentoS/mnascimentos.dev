@@ -24,7 +24,7 @@
       "name": "C6 Assistant",
       "where": "C6 Bank",
       "year": "2024–present",
-      "featured": true,
+      "featured": 1,
       "description": "I lead Android for C6 Assistant, C6 Bank's AI assistant — from building the conversational interface to the launch for the entire customer base. It's now one of the app's main entry points for questions, support and banking operations.",
       "impact": "Launched to 35M customers in Dec 2024",
       "status": "ongoing",
@@ -41,7 +41,7 @@
       "name": "Home Experience",
       "where": "C6 Bank",
       "year": "2020–2024",
-      "featured": true,
+      "featured": 3,
       "description": "Home Experience team: evolving the home, login, investments and profile — the screens every customer opens every day. Reusable, customizable Design System components and product permission services.",
       "impact": "Core flows of the banking app",
       "playstore": "https://play.google.com/store/apps/details?id=com.c6bank.app&hl=en-US",
@@ -65,7 +65,7 @@
     {
       "name": "EC Bahia",
       "year": "2018–2019",
-      "featured": true,
+      "featured": 4,
       "description": "Official app of Esporte Clube Bahia: streaming, live play-by-play, news, official store, partner coupons and membership sign-up. I worked on the Android app development.",
       "playstore": "https://play.google.com/store/apps/details?id=io.ecbahia&hl=en-US",
       "impact": "100k+ downloads · 4.2 rating on Google Play",
@@ -98,7 +98,7 @@
     {
       "name": "Aureole Launcher",
       "year": "",
-      "featured": true,
+      "featured": 2,
       "description": "A modern, customizable Android launcher built 100% in Jetpack Compose: dynamic grid with drag-and-drop, glassmorphic UI with real-time blur, dynamic color themes, folders and native widgets.",
       "stack": [
         "Kotlin",
@@ -123,7 +123,7 @@
       "description": "Android app to create and organize WhatsApp stickers: removes the photo background to turn it into a sticker, groups them into packs and sends them straight to WhatsApp — with a gallery to find and share packs with friends.",
       "github": "https://github.com/MNascimentoS/Tiker-App",
       "cover": {
-        "src": "/images/projects/tiker-banner.jpg",
+        "src": "/images/projects/tiker-banner-en.jpg",
         "alt": "Tiker: \"Meet Tiker, your sticker organizer\" banner"
       },
       "images": [
@@ -177,7 +177,7 @@
       "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=en-US",
       "images": [
         {
-          "src": "/images/projects/constante.jpg",
+          "src": "/images/projects/constante-en.jpg",
           "alt": "Constante: weekly habit progress screen"
         }
       ]
