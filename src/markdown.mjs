@@ -1,3 +1,4 @@
+import { highlight } from './highlight.mjs';
 // Conversor Markdown -> HTML minimalista e sem dependências.
 // Suporta: frontmatter, títulos, parágrafos, listas (ordenadas/não ordenadas),
 // blocos de código com linguagem, citações, imagens, links, negrito, itálico,
@@ -132,7 +133,7 @@ export function markdown(src, opts = {}) {
       i++;
       while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]);
       i++;
-      out.push(`<pre class="code"${lang ? ` data-lang="${lang}"` : ''}><code>${escapeHtml(buf.join('\n'))}</code></pre>`);
+      out.push(`<pre class="code"${lang ? ` data-lang="${lang}"` : ''}><code>${highlight(buf.join('\n'), lang)}</code></pre>`);
       continue;
     }
 

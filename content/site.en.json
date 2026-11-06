@@ -203,6 +203,12 @@
       "name": "CittiCard",
       "year": "2017–2018",
       "description": "Crowdsourced app showing whether SalvadorCard top-up stations are working."
+    },
+    {
+      "name": "Turim Lab",
+      "year": "2015–2017",
+      "description": "Blog (in Portuguese) where I documented what I was learning in computing, as tutorials: programming in C, Java, PHP and Android, Linux, security, OpenCV and Arduino.",
+      "url": "https://turimlab.blogspot.com/"
     }
   ],
   "about": [

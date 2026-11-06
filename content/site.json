@@ -203,6 +203,12 @@
       "name": "CittiCard",
       "year": "2017–2018",
       "description": "App colaborativo sobre o funcionamento dos postos de recarga do SalvadorCard."
+    },
+    {
+      "name": "Turim Lab",
+      "year": "2015–2017",
+      "description": "Blog onde eu registrava o que ia aprendendo em computação, em forma de tutoriais: programação em C, Java, PHP e Android, Linux, segurança, OpenCV e Arduino.",
+      "url": "https://turimlab.blogspot.com/"
     }
   ],
   "about": [

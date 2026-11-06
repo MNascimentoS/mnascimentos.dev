@@ -54,3 +54,21 @@
   });
   dialog.addEventListener('close', () => { img.src = ''; });
 })();
+
+// Botão "copiar" nos blocos de código
+document.querySelectorAll('pre.code').forEach((pre) => {
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.type = 'button';
+  const label = document.documentElement.lang.startsWith('pt') ? ['copiar', 'copiado'] : ['copy', 'copied'];
+  btn.textContent = label[0];
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(pre.querySelector('code').innerText);
+      btn.textContent = label[1];
+      btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = label[0]; btn.classList.remove('ok'); }, 1500);
+    } catch { /* clipboard indisponível */ }
+  });
+  pre.append(btn);
+});

@@ -166,3 +166,35 @@ footer { border-top: 1px solid var(--line); padding: 20px 0 40px; font-size: 0.8
 .stack-group .tags { margin-top: 0; }
 .stack-label { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); padding-top: 2px; }
 @media (max-width: 520px) { .stack-group { grid-template-columns: 1fr; gap: 4px; } }
+
+/* capas dos posts */
+.post-row.has-thumb { grid-template-columns: 104px 1fr 168px; gap: 8px 16px; align-items: start; }
+.post-row .thumb { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.post-row .thumb img { display: block; width: 100%; height: auto; border-radius: 0; }
+.post-cover { display: block; width: 100%; margin: 18px 0 4px; border: 1px solid var(--line); }
+.cols .post-row.has-thumb { grid-template-columns: 1fr 120px; }
+.cols .post-row.has-thumb .date { grid-column: 1 / -1; }
+@media (max-width: 520px) {
+  .post-row.has-thumb, .cols .post-row.has-thumb { grid-template-columns: 1fr; }
+  .post-row .thumb { order: -1; }
+}
+
+/* blocos de código */
+pre.code { position: relative; padding: 42px 18px 16px; font-size: 0.85rem; line-height: 1.65; background: #0b0e12; border-color: #222a34; }
+pre.code::before { content: attr(data-lang); position: absolute; top: 0; left: 0; right: 0; height: 30px; padding: 0 14px; display: flex; align-items: center; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: #11161d; border-bottom: 1px solid #222a34; border-radius: 8px 8px 0 0; }
+pre.code:not([data-lang])::before, pre.code[data-lang="text"]::before { content: ''; }
+pre.code:not([data-lang]), pre.code[data-lang="text"] { padding-top: 42px; }
+.copy-btn { position: absolute; top: 4px; right: 8px; font: 500 0.7rem var(--mono); color: var(--muted); background: transparent; border: 1px solid transparent; border-radius: 5px; padding: 2px 8px; cursor: pointer; }
+.copy-btn:hover { color: var(--text); border-color: var(--line); }
+.copy-btn.ok { color: var(--accent); }
+.tk-com { color: #6b7686; font-style: italic; }
+.tk-key { color: #7cb7ff; }
+.tk-str { color: #a5e3b8; }
+.tk-num { color: #f0b86e; }
+.tk-bool { color: #f78c6c; }
+.tk-punct { color: #7c8796; }
+.tk-tmpl { color: #e5c07b; }
+.tk-cmd { color: #7dd3a8; font-weight: 600; }
+.tk-flag { color: #c3a6ff; }
+.tk-var { color: #f0b86e; }
+.tk-kw { color: #c792ea; }

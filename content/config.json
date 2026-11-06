@@ -1,4 +1,5 @@
 {
-  "blog": false,
-  "url": "https://mnascimentos.dev"
+  "blog": true,
+  "url": "https://mnascimentos.dev",
+  "cloudflareAnalytics": ""
 }

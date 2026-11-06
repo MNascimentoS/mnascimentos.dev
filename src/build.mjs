@@ -75,6 +75,7 @@ for (const f of fs.readdirSync(postsDir).filter((f) => f.endsWith('.md'))) {
     slug: data.slug || slugify(f.replace(/(\.(en|pt))?\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '')),
     date: String(data.date).slice(0, 10),
     minutes: Math.max(1, Math.round(words.split(/\s+/).length / 200)),
+    words: words.split(/\s+/).length,
     html,
     source,
   });
@@ -209,10 +210,11 @@ function buildLang(lang) {
   const langPosts = posts.filter((p) => p.lang === lang);
   const postUrl = (p) => `${R.blog}${p.slug}/`;
 
-  const page = ({ path: p, key, alt, title, description = site.bio, body }) => {
+  const page = ({ path: p, key, alt, title, description = site.bio, body, article, lastmod }) => {
+    const ogImage = `${site.url}${article?.image || OG_IMAGE}`;
     const altPath = alt === undefined ? ROUTES[other][key] || ROUTES[other].home : alt;
     const nav = [['home', R.home, t.home], ['projects', R.projects, t.projects], ...(BLOG ? [['blog', R.blog, t.blog]] : [])];
-    if (key) SITEMAP.push({ path: p, lang, alt: altPath });
+    if (key) SITEMAP.push({ path: p, lang, alt: altPath, lastmod });
     const html = `<!doctype html>
 <html lang="${t.htmlLang}">
 <head>
@@ -223,13 +225,16 @@ function buildLang(lang) {
 <meta property="og:title" content="${e(title)}">
 <meta property="og:description" content="${e(description)}">
 <meta property="og:url" content="${site.url}${p}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${article ? 'article' : 'website'}">${article ? `
+<meta property="article:published_time" content="${article.date}">
+<meta property="article:author" content="${site.url}/">${asArray(article.tags).map((tg) => `
+<meta property="article:tag" content="${e(tg)}">`).join('')}` : ''}
 <meta property="og:locale" content="${t.htmlLang.replace('-', '_')}">
-<meta property="og:image" content="${site.url}${OG_IMAGE}">
+<meta property="og:image" content="${ogImage}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${site.url}${OG_IMAGE}">
+<meta name="twitter:image" content="${ogImage}">
 <meta name="theme-color" content="#0f1216">
 <link rel="canonical" href="${site.url}${p}">
 <link rel="alternate" hreflang="${t.htmlLang}" href="${site.url}${p}">
@@ -242,6 +247,8 @@ ${site.links.filter((l) => /^https?:/.test(l.url)).map((l) => `<link rel="me" hr
 ${BLOG ? `<link rel="alternate" type="application/rss+xml" href="${R.home}rss.xml">` : ''}
 ${key === 'home' ? `<script type="application/ld+json">${jsonLd(site, lang)}</script>` : ''}
 ${key === 'projects' ? `<script type="application/ld+json">${projectsLd(site, lang)}</script>` : ''}
+${article?.ld ? `<script type="application/ld+json">${JSON.stringify(article.ld).replace(/</g, '\\u003c')}</script>` : ''}
+${CONFIG.cloudflareAnalytics ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${e(CONFIG.cloudflareAnalytics)}"}'></script>` : ''}
 <link rel="stylesheet" href="/styles.css?v=${CSS_VERSION}">
 </head>
 <body>
@@ -286,13 +293,14 @@ ${body}
   };
 
   const postRow = (p) => `
-<div class="post-row">
+<div class="post-row${p.cover ? ' has-thumb' : ''}">
   <span class="date">${p.date}</span>
   <div>
     <a href="${postUrl(p)}">${e(p.title)}</a>
     ${p.description ? `<p class="muted small">${e(p.description)}</p>` : ''}
     ${tags(p.tags)}
   </div>
+  ${p.cover ? `<a class="thumb" href="${postUrl(p)}" tabindex="-1" aria-hidden="true"><img src="${e(p.cover)}" alt="" loading="lazy" width="1200" height="630"></a>` : ''}
 </div>`;
 
   const xpRow = (year, title, sub) => `
@@ -393,6 +401,12 @@ ${[...site.work, ...site.personal].map((x) => `<item><title>${e(x.name)}${x.year
     path: R.blog, key: 'blog',
     title: `Blog — ${site.name}`,
     description: t.blogLead,
+    article: { ld: {
+      '@context': 'https://schema.org', '@type': 'Blog', '@id': `${site.url}${R.blog}#blog`, url: `${site.url}${R.blog}`,
+      name: `Blog — ${site.name}`, description: t.blogLead, inLanguage: t.htmlLang,
+      author: { '@id': `${site.url}/#person` }, publisher: { '@id': `${site.url}/#person` },
+      blogPost: langPosts.map((x) => ({ '@type': 'BlogPosting', headline: x.title, url: `${site.url}${postUrl(x)}`, datePublished: x.date })),
+    } },
     body: `
 <div class="narrow">
 <h1>Blog</h1>
@@ -413,12 +427,28 @@ ${[...site.work, ...site.personal].map((x) => `<item><title>${e(x.name)}${x.year
       alt: tr ? `${ROUTES[other].blog}${tr.slug}/` : ROUTES[other].blog,
       title: `${p.title} — ${site.name}`,
       description: p.description,
+      lastmod: p.updated || p.date,
+      article: {
+        date: p.date, tags: p.tags, image: p.cover,
+        ld: {
+          '@context': 'https://schema.org', '@type': 'BlogPosting',
+          '@id': `${site.url}${postUrl(p)}#post`, url: `${site.url}${postUrl(p)}`, mainEntityOfPage: `${site.url}${postUrl(p)}`,
+          headline: p.title, description: p.description, inLanguage: t.htmlLang,
+          datePublished: p.date, dateModified: p.updated || p.date, keywords: asArray(p.tags).join(', '),
+          wordCount: p.words, timeRequired: `PT${p.minutes}M`,
+          image: `${site.url}${p.cover || OG_IMAGE}`,
+          author: { '@type': 'Person', '@id': `${site.url}/#person`, name: site.name, url: site.url, sameAs: site.links.filter((l) => /^https?:/.test(l.url)).map((l) => l.url) },
+          publisher: { '@id': `${site.url}/#person` },
+          isPartOf: { '@type': 'Blog', '@id': `${site.url}${R.blog}#blog` },
+        },
+      },
       body: `
 <div class="narrow">
 <p class="small"><a href="${R.blog}">← blog</a></p>
 <article>
   <h1>${e(p.title)}</h1>
-  <p class="date">${p.date} · ${p.minutes} min</p>
+  <p class="date"><time datetime="${p.date}">${p.date}</time> · ${p.minutes} min · <a href="${R.home}" rel="author">${e(site.name)}</a></p>
+  ${p.cover ? `<img class="post-cover" src="${e(p.cover)}" alt="" width="1200" height="630">` : ''}
   ${p.source ? `<p><a class="source" href="${e(p.source.url)}" target="_blank" rel="noopener">↳ ${t.readmeFrom} ${e(p.source.label)}</a></p>` : ''}
   ${tags(p.tags)}
   <div class="prose">${p.html}</div>
@@ -433,7 +463,7 @@ ${[...site.work, ...site.personal].map((x) => `<item><title>${e(x.name)}${x.year
 
   write(`${R.home.slice(1)}rss.xml`, `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel><title>${e(site.name)}</title><link>${site.url}${R.home}</link><description>${e(site.role)}</description><language>${t.htmlLang}</language>
-${langPosts.map((p) => `<item><title>${e(p.title)}</title><link>${site.url}${postUrl(p)}</link><guid>${site.url}${postUrl(p)}</guid><pubDate>${new Date(p.date + 'T12:00:00Z').toUTCString()}</pubDate></item>`).join('\n')}
+${langPosts.map((p) => `<item><title>${e(p.title)}</title><link>${site.url}${postUrl(p)}</link><guid isPermaLink="true">${site.url}${postUrl(p)}</guid><pubDate>${new Date(p.date + 'T12:00:00Z').toUTCString()}</pubDate>${p.description ? `<description>${e(p.description)}</description>` : ''}${asArray(p.tags).map((c) => `<category>${e(c)}</category>`).join('')}</item>`).join('\n')}
 </channel></rss>`);
 
   return page;
@@ -460,7 +490,7 @@ ${SITEMAP.filter((u) => !seen.has(u.path) && seen.add(u.path)).map((u) => {
   <xhtml:link rel="alternate" hreflang="pt-BR" href="${base}${pt}"/>
   <xhtml:link rel="alternate" hreflang="en" href="${base}${en}"/>
   <xhtml:link rel="alternate" hreflang="x-default" href="${base}${pt}"/>` : '';
-  return `<url><loc>${base}${u.path}</loc><lastmod>${today}</lastmod>${alts}
+  return `<url><loc>${base}${u.path}</loc><lastmod>${u.lastmod || today}</lastmod>${alts}
 </url>`;
 }).join('\n')}
 </urlset>`);
