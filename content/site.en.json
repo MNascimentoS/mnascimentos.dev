@@ -91,7 +91,53 @@
       "year": "2018–2020",
       "description": "Nutritional therapy management system for hospitals and clinics: patient admission, diet prescription and administration, exams, product catalog and calorie/protein reports.",
       "where": "Space Rocket",
-      "impact": "Currently used in hospitals in Bahia, Brazil"
+      "impact": "Currently used in hospitals in Bahia, Brazil",
+      "cover": {
+        "src": "/images/projects/dan.jpg",
+        "alt": "Data and Nutrition: patient nutritional assessment screen (personal data hidden)"
+      }
+    },
+    {
+      "name": "Constante",
+      "year": "2019–2020",
+      "description": "Habits and goals app: unlimited custom habits, reminders, progress calendar, weekly/monthly/yearly stats and a timer.",
+      "where": "Space Rocket",
+      "impact": "10k+ downloads · 4.5 rating on Google Play",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=en-US",
+      "images": [
+        {
+          "src": "/images/projects/constante-en.jpg",
+          "alt": "Constante: weekly habit progress screen"
+        }
+      ]
+    },
+    {
+      "name": "DizzinessApp",
+      "year": "2016–2020",
+      "description": "Dizziness therapy app for children and teens: exercises that stimulate the vestibulo-ocular reflex, with progress tracked by the DHI-CA score.",
+      "impact": "Winner of Inova+Saúde and Campus Future · 4.5 rating on Google Play",
+      "where": "Space Rocket",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=en-US",
+      "images": [
+        {
+          "src": "/images/projects/dizziness-1.jpg",
+          "alt": "DizzinessApp: home screen with the Inova+Saúde 2018 badge"
+        },
+        {
+          "src": "/images/projects/dizziness-2.jpg",
+          "alt": "DizzinessApp: visual stimulation exercise running"
+        }
+      ]
+    },
+    {
+      "name": "CittiCard",
+      "year": "2017–2018",
+      "description": "Crowdsourced app where users of SalvadorCard self-service stations report whether stations and top-up terminals are working, and see the nearest terminals on a map.",
+      "cover": {
+        "src": "/images/projects/citticard.jpg",
+        "alt": "CittiCard: app icon and a map of Salvador with the top-up stations"
+      },
+      "where": "Space Rocket"
     }
   ],
   "personal": [
@@ -151,38 +197,6 @@
       ]
     },
     {
-      "name": "DizzinessApp",
-      "year": "2016–2020",
-      "description": "Dizziness therapy app for children and teens: exercises that stimulate the vestibulo-ocular reflex, with progress tracked by the DHI-CA score.",
-      "impact": "Winner of Inova+Saúde and Campus Future · 4.5 rating on Google Play",
-      "where": "Space Rocket",
-      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=en-US",
-      "images": [
-        {
-          "src": "/images/projects/dizziness-1.jpg",
-          "alt": "DizzinessApp: home screen with the Inova+Saúde 2018 badge"
-        },
-        {
-          "src": "/images/projects/dizziness-2.jpg",
-          "alt": "DizzinessApp: visual stimulation exercise running"
-        }
-      ]
-    },
-    {
-      "name": "Constante",
-      "year": "2019–2020",
-      "description": "Habits and goals app: unlimited custom habits, reminders, progress calendar, weekly/monthly/yearly stats and a timer.",
-      "where": "Space Rocket",
-      "impact": "10k+ downloads · 4.5 rating on Google Play",
-      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=en-US",
-      "images": [
-        {
-          "src": "/images/projects/constante-en.jpg",
-          "alt": "Constante: weekly habit progress screen"
-        }
-      ]
-    },
-    {
       "name": "Robotics · BahiaRT",
       "year": "2016–2018",
       "description": "Robotics research with the BahiaRT team (ACSO/UNEB): strategy and coordination of robots in 3D simulated soccer and Very Small Size Soccer, competing at RoboCup.",
@@ -200,15 +214,23 @@
       ]
     },
     {
-      "name": "CittiCard",
-      "year": "2017–2018",
-      "description": "Crowdsourced app showing whether SalvadorCard top-up stations are working."
+      "name": "InfoUNEB",
+      "year": "2016",
+      "description": "App built for InfoUNEB, an event organized by Information Systems students at UNEB: event announcements and schedule, plus a campus map showing where each activity takes place.",
+      "cover": {
+        "src": "/images/projects/infouneb.jpg",
+        "alt": "InfoUNEB: map of UNEB's Campus I with the location of the event's activities"
+      }
     },
     {
       "name": "Turim Lab",
       "year": "2015–2017",
       "description": "Blog (in Portuguese) where I documented what I was learning in computing, as tutorials: programming in C, Java, PHP and Android, Linux, security, OpenCV and Arduino.",
-      "url": "https://turimlab.blogspot.com/"
+      "url": "https://turimlab.blogspot.com/",
+      "cover": {
+        "src": "/images/projects/turimlab.jpg",
+        "alt": "Turim Lab: blog home page, with tutorials on C, Android, PHP, OpenCV and Arduino"
+      }
     }
   ],
   "about": [

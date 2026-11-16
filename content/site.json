@@ -91,7 +91,53 @@
       "year": "2018–2020",
       "description": "Sistema de gestão da terapia nutricional para hospitais e clínicas: admissão de pacientes, prescrição e administração de dietas, exames, catálogo de produtos e relatórios de calorias e proteínas.",
       "where": "Space Rocket",
-      "impact": "Em uso hoje em hospitais da Bahia"
+      "impact": "Em uso hoje em hospitais da Bahia",
+      "cover": {
+        "src": "/images/projects/dan.jpg",
+        "alt": "Data and Nutrition: tela de evolução nutricional do paciente (dados pessoais ocultados)"
+      }
+    },
+    {
+      "name": "Constante",
+      "year": "2019–2020",
+      "description": "App de hábitos e metas: hábitos ilimitados e customizáveis, lembretes, calendário de progresso, estatísticas por semana, mês e ano, e timer.",
+      "where": "Space Rocket",
+      "impact": "10 mil+ downloads · nota 4,5 na Play Store",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=pt-BR",
+      "images": [
+        {
+          "src": "/images/projects/constante.jpg",
+          "alt": "Constante: tela de progresso semanal dos hábitos"
+        }
+      ]
+    },
+    {
+      "name": "DizzinessApp",
+      "year": "2016–2020",
+      "description": "App de terapia para tontura em crianças e adolescentes: exercícios que estimulam o reflexo vestíbulo-ocular e acompanhamento da evolução pelo escore DHI-CA.",
+      "impact": "Campeão do Inova+Saúde e do Campus Future · nota 4,5 na Play Store",
+      "where": "Space Rocket",
+      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=pt-BR",
+      "images": [
+        {
+          "src": "/images/projects/dizziness-1.jpg",
+          "alt": "DizzinessApp: tela inicial com o selo Inova+Saúde 2018"
+        },
+        {
+          "src": "/images/projects/dizziness-2.jpg",
+          "alt": "DizzinessApp: exercício de estímulo visual em andamento"
+        }
+      ]
+    },
+    {
+      "name": "CittiCard",
+      "year": "2017–2018",
+      "description": "App colaborativo em que os usuários dos postos de autoatendimento do SalvadorCard informam se os postos e terminais de recarga estão funcionando, além de mostrar no mapa os terminais mais próximos.",
+      "cover": {
+        "src": "/images/projects/citticard.jpg",
+        "alt": "CittiCard: ícone do app e mapa de Salvador com os postos de recarga"
+      },
+      "where": "Space Rocket"
     }
   ],
   "personal": [
@@ -151,38 +197,6 @@
       ]
     },
     {
-      "name": "DizzinessApp",
-      "year": "2016–2020",
-      "description": "App de terapia para tontura em crianças e adolescentes: exercícios que estimulam o reflexo vestíbulo-ocular e acompanhamento da evolução pelo escore DHI-CA.",
-      "impact": "Campeão do Inova+Saúde e do Campus Future · nota 4,5 na Play Store",
-      "where": "Space Rocket",
-      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.dizzinessapp&hl=pt-BR",
-      "images": [
-        {
-          "src": "/images/projects/dizziness-1.jpg",
-          "alt": "DizzinessApp: tela inicial com o selo Inova+Saúde 2018"
-        },
-        {
-          "src": "/images/projects/dizziness-2.jpg",
-          "alt": "DizzinessApp: exercício de estímulo visual em andamento"
-        }
-      ]
-    },
-    {
-      "name": "Constante",
-      "year": "2019–2020",
-      "description": "App de hábitos e metas: hábitos ilimitados e customizáveis, lembretes, calendário de progresso, estatísticas por semana, mês e ano, e timer.",
-      "where": "Space Rocket",
-      "impact": "10 mil+ downloads · nota 4,5 na Play Store",
-      "playstore": "https://play.google.com/store/apps/details?id=br.com.spacerocket.constante&hl=pt-BR",
-      "images": [
-        {
-          "src": "/images/projects/constante.jpg",
-          "alt": "Constante: tela de progresso semanal dos hábitos"
-        }
-      ]
-    },
-    {
       "name": "Robótica · BahiaRT",
       "year": "2016–2018",
       "description": "Pesquisa em robótica no time BahiaRT (ACSO/UNEB): estratégia e coordenação de robôs no futebol simulado 3D e no Very Small Size Soccer, com participação na RoboCup.",
@@ -200,15 +214,23 @@
       ]
     },
     {
-      "name": "CittiCard",
-      "year": "2017–2018",
-      "description": "App colaborativo sobre o funcionamento dos postos de recarga do SalvadorCard."
+      "name": "InfoUNEB",
+      "year": "2016",
+      "description": "App feito para o InfoUNEB, evento organizado pelos estudantes de Sistemas de Informação da UNEB: avisos e programação do evento, e mapa do campus com a localização das atividades.",
+      "cover": {
+        "src": "/images/projects/infouneb.jpg",
+        "alt": "InfoUNEB: mapa do Campus I da UNEB com a localização das atividades do evento"
+      }
     },
     {
       "name": "Turim Lab",
       "year": "2015–2017",
       "description": "Blog onde eu registrava o que ia aprendendo em computação, em forma de tutoriais: programação em C, Java, PHP e Android, Linux, segurança, OpenCV e Arduino.",
-      "url": "https://turimlab.blogspot.com/"
+      "url": "https://turimlab.blogspot.com/",
+      "cover": {
+        "src": "/images/projects/turimlab.jpg",
+        "alt": "Turim Lab: página inicial do blog, com tutoriais de C, Android, PHP, OpenCV e Arduino"
+      }
     }
   ],
   "about": [
