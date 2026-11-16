@@ -110,11 +110,11 @@
         "Fastlane"
       ],
       "github": "https://github.com/MNascimentoS/Aureole-Launcher",
-      "url": "https://aureole.mnascimentos.dev",
+      "url": "https://aureolelauncher.app/",
       "status": "ongoing",
       "cover": {
         "src": "/images/projects/aureole-en.jpg",
-        "alt": "Aureole Launcher: \"Your home screen, organized your way.\" — no ads, no tracking, data stays on device"
+        "alt": "Aureole Launcher: \"Your home screen, organized your way.\" with two launcher screens"
       }
     },
     {

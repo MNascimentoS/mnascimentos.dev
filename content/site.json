@@ -110,11 +110,11 @@
         "Fastlane"
       ],
       "github": "https://github.com/MNascimentoS/Aureole-Launcher",
-      "url": "https://aureole.mnascimentos.dev",
+      "url": "https://aureolelauncher.app/",
       "status": "em andamento",
       "cover": {
         "src": "/images/projects/aureole-pt.jpg",
-        "alt": "Aureole Launcher: \"Sua tela inicial, organizada do seu jeito.\" — sem anúncios, sem rastreamento, dados no aparelho"
+        "alt": "Aureole Launcher: \"Sua tela inicial, organizada do seu jeito.\" com duas telas do launcher"
       }
     },
     {
